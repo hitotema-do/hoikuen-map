@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>広島市 保育園空きマップ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1f2933;
+    --muted: #616e7c;
+    --border: #d9e2ec;
+    --accent: #2563eb;
+    --none: #9aa5b1;
+    --few: #f59e0b;
+    --many: #16a34a;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", "Meiryo", sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+  }
+  /* 上部は「タイトル1行＋操作1行」に収めて、地図の面積を最大にする */
+  header {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    z-index: 1000;
+  }
+  .title { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+  h1 { font-size: 16px; margin: 0; }
+  .sub { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+  .controls { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+  .ages {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .ages::-webkit-scrollbar { display: none; }
+  .chip {
+    flex: none;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 6px 11px;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+  .ages .chip { flex: 1; max-width: 64px; padding: 6px 0; }
+  .chip.icon { padding: 6px 9px; }
+  /* 地図の右上に重ねるボタン */
+  .map-buttons { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .map-buttons .chip { box-shadow: 0 1px 4px rgba(0,0,0,.25); font-size: 13px; }
+
+  /* 凡例と注意書きは地図の左下に重ねる */
+  .legend-box {
+    background: rgba(255,255,255,.92);
+    border-radius: 8px;
+    padding: 6px 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    font-size: 11px;
+    color: var(--muted);
+    max-width: 260px;
+    line-height: 1.5;
+  }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; color: var(--text); font-size: 12px; }
+  .legend span::before {
+    content: "";
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: -1px;
+    background: var(--c);
+  }
+  #map { flex: 1; min-height: 0; }
+  .leaflet-tile-pane { filter: grayscale(1) contrast(0.6) brightness(1.2); }
+
+  .pin {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,.4);
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: system-ui, sans-serif;
+  }
+  .pin.na { width: 22px; height: 22px; font-size: 11px; opacity: .6; }
+
+  .popup h2 { font-size: 15px; margin: 0 0 2px; }
+  .popup .type { font-size: 12px; color: var(--muted); }
+  .popup table { border-collapse: collapse; margin: 8px 0; font-size: 13px; }
+  .popup th, .popup td { border: 1px solid var(--border); padding: 3px 7px; text-align: center; }
+  .popup th { background: #f5f7fa; font-weight: 600; }
+  .popup td.sel, .popup th.sel { background: #dbeafe; font-weight: 700; }
+  .popup .info { font-size: 12px; line-height: 1.6; }
+  .popup .note { font-size: 12px; color: #b45309; margin-top: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="title">
+    <h1>広島市 保育園空きマップ</h1>
+    <span class="sub">11月入所分（10/1時点）・試作 中区10施設</span>
+  </div>
+  <div class="controls">
+    <div class="ages" role="group" aria-label="年齢"></div>
+  </div>
+</header>
+<div id="map"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="data.js"></script>
+<script>
+const AGES = [0, 1, 2, 3, 4, 5];
+let age = 0;
+let onlyOpen = false;
+
+const map = L.map("map", { zoomSnap: 0.5 }).setView([34.385, 132.455], 14);
+// 背景地図は国土地理院の淡色地図。ファイルを直接開いても表示でき、登録も不要。
+// 記号が多いので白黒・淡色にしてピンを目立たせる（CSSの .leaflet-tile-pane）
+L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png", {
+  maxZoom: 18,
+  attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>',
+}).addTo(map);
+
+const legend = L.control({ position: "bottomleft" });
+legend.onAdd = () => {
+  const div = L.DomUtil.create("div", "legend-box");
+  div.innerHTML = `<div class="legend">
+      <span style="--c:var(--many)">3人以上</span>
+      <span style="--c:var(--few)">1〜2人</span>
+      <span style="--c:var(--none)">空きなし</span>
+    </div>
+    空きがあっても入園できるとは限りません。出典：広島市「保育園等の空き状況」`;
+  return div;
+};
+legend.addTo(map);
+
+const buttons = L.control({ position: "topright" });
+buttons.onAdd = () => {
+  const div = L.DomUtil.create("div", "map-buttons");
+  div.innerHTML = `<button class="chip" id="onlyOpen" aria-pressed="false">空きありのみ</button>
+    <button class="chip icon" id="locate" aria-label="現在地">📍 現在地</button>`;
+  L.DomEvent.disableClickPropagation(div);
+  return div;
+};
+buttons.addTo(map);
+
+const layer = L.layerGroup().addTo(map);
+
+function color(n) {
+  if (n >= 3) return "var(--many)";
+  if (n >= 1) return "var(--few)";
+  return "var(--none)";
+}
+
+function popupHtml(f) {
+  const head = AGES.map(a => `<th class="${a === age ? "sel" : ""}">${a}歳</th>`).join("");
+  const row = (arr) => AGES.map(a => {
+    const v = arr[a];
+    return `<td class="${a === age ? "sel" : ""}">${v === null ? "－" : v}</td>`;
+  }).join("");
+  return `<div class="popup">
+    <h2>${f.name}</h2>
+    <div class="type">${f.type}</div>
+    <table>
+      <tr><th></th>${head}</tr>
+      <tr><th>空き</th>${row(f.vacancy)}</tr>
+      <tr><th>待機</th>${row(f.waiting)}</tr>
+    </table>
+    <div class="info">
+      📍 ${f.address}<br>
+      📞 <a href="tel:${f.tel}">${f.tel}</a><br>
+      🕖 ${f.hours}${f.extended ? `（延長 ${f.extended}）` : ""}<br>
+      👶 定員 ${f.capacity}人
+    </div>
+    ${f.note ? `<div class="note">※${f.note}</div>` : ""}
+  </div>`;
+}
+
+function render() {
+  layer.clearLayers();
+  for (const f of window.FACILITIES) {
+    const n = f.vacancy[age];
+    if (onlyOpen && !(n > 0)) continue;
+    const na = n === null;  // この年齢は受け入れ対象外
+    const icon = L.divIcon({
+      className: "",
+      html: `<div class="pin ${na ? "na" : ""}" style="background:${na ? "#cbd2d9" : color(n)}">${na ? "－" : n}</div>`,
+      iconSize: na ? [22, 22] : [34, 34],
+      iconAnchor: na ? [11, 11] : [17, 17],
+    });
+    L.marker([f.lat, f.lng], { icon, title: f.name, zIndexOffset: (n || 0) * 100 })
+      .bindPopup(popupHtml(f), { maxWidth: 320 })
+      .addTo(layer);
+  }
+}
+
+const ageBox = document.querySelector(".ages");
+for (const a of AGES) {
+  const b = document.createElement("button");
+  b.className = "chip";
+  b.textContent = `${a}歳`;
+  b.setAttribute("aria-pressed", a === age);
+  b.onclick = () => {
+    age = a;
+    ageBox.querySelectorAll("button").forEach((x, i) => x.setAttribute("aria-pressed", i === a));
+    render();
+  };
+  ageBox.appendChild(b);
+}
+const openBtn = document.getElementById("onlyOpen");
+openBtn.onclick = () => {
+  onlyOpen = !onlyOpen;
+  openBtn.setAttribute("aria-pressed", onlyOpen);
+  render();
+};
+document.getElementById("locate").onclick = () => map.locate({ setView: true, maxZoom: 15 });
+map.on("locationfound", e => L.circleMarker(e.latlng, { radius: 8, color: "#2563eb", fillOpacity: 0.8 }).addTo(map));
+
+render();
+// 右上のボタンと左下の凡例にピンが隠れないよう余白を取る
+map.fitBounds(L.latLngBounds(window.FACILITIES.map(f => [f.lat, f.lng])), {
+  paddingTopLeft: [24, 80],
+  paddingBottomRight: [24, 110],
+});
+</script>
+</body>
+</html>
