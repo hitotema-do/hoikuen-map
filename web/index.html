@@ -149,6 +149,21 @@
     display: flex; flex-direction: column; gap: 10px;
   }
   .panel h3 { font-size: 13px; margin: 0 0 4px; color: var(--muted); font-weight: 600; }
+  /* パネルの上の「閉じる」と下の「地図を見る」は、中身が長くても常に見えるように固定する */
+  .panel-head {
+    position: sticky; top: -12px; z-index: 1;
+    margin: -12px -12px 0; padding: 10px 12px 8px;
+    background: var(--bg); border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .panel-head strong { font-size: 15px; }
+  .panel-foot {
+    position: sticky; bottom: -12px; z-index: 1;
+    margin: 0 -12px -12px; padding: 8px 12px 10px;
+    background: var(--bg); border-top: 1px solid var(--border);
+  }
+  /* 検索結果は一覧の中だけで動かし、下の区・種類のボタンまで押し出さない */
+  .results { max-height: 40vh; overflow-y: auto; }
   .panel input[type="search"] {
     width: 100%;
     font-size: 16px; /* 16px未満だとiPhoneで入力時に画面が拡大される */
@@ -187,6 +202,10 @@
 <div class="map-wrap">
   <div id="map"></div>
   <div class="panel" id="panel" hidden>
+    <div class="panel-head">
+      <strong>絞り込み・検索</strong>
+      <button class="chip" id="closePanelTop" aria-label="閉じる">✕ 閉じる</button>
+    </div>
     <div>
       <h3><label for="q">施設名で探す</label></h3>
       <input type="search" id="q" placeholder="例：中島、りらっくす" autocomplete="off">
@@ -441,6 +460,10 @@ qInput.addEventListener("keydown", e => {
   }
 });
 document.getElementById("closePanel").onclick = closePanel;
+document.getElementById("closePanelTop").onclick = closePanel;
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && !panel.hidden) closePanel();
+});
 document.getElementById("reset").onclick = () => {
   wardSel.clear();
   typeSel.clear();
