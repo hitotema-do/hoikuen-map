@@ -16,6 +16,14 @@
 | `scripts/` | 抽出・変換のスクリプト |
 | `web/` | 地図のページ（`index.html` と、生成される `data.js`） |
 
+## 準備
+
+```
+pip install -r requirements.txt
+```
+
+PDFの読み取りにPyMuPDFを使います。2.0以降は表の見出しの読み方が変わり、抽出スクリプトが止まるため、1.x系を入れてください（`requirements.txt` で指定済み）。
+
 ## 作り方
 
 ```
