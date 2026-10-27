@@ -100,7 +100,14 @@
     display: flex; align-items: center; justify-content: center;
     font-family: system-ui, sans-serif;
   }
-  .pin.na { width: 22px; height: 22px; font-size: 11px; opacity: .6; }
+  /* 空きなし・対象年齢外は小さな点にして、空きのある園を目立たせる。
+     点そのものは小さいが、指で押せるよう周りに透明な押せる範囲を取る */
+  .dot-hit { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
+  .dot { border-radius: 50%; }
+  .dot.zero { width: 12px; height: 12px; background: var(--none); border: 2px solid #fff; opacity: .8; box-shadow: 0 0 2px rgba(0,0,0,.3); }
+  .dot.na { width: 9px; height: 9px; border: 2px solid var(--none); background: #fff; opacity: .6; }
+  .legend span.small::before { width: 8px; height: 8px; vertical-align: 0; }
+  .legend span.ring::before { width: 6px; height: 6px; background: #fff; border: 2px solid var(--none); vertical-align: 0; }
 
   .popup h2 { font-size: 15px; margin: 0 0 2px; }
   .popup .type { font-size: 12px; color: var(--muted); }
@@ -145,7 +152,8 @@ legend.onAdd = () => {
   div.innerHTML = `<div class="legend">
       <span style="--c:var(--many)">3人以上</span>
       <span style="--c:var(--few)">1〜2人</span>
-      <span style="--c:var(--none)">空きなし</span>
+      <span class="small" style="--c:var(--none)">空きなし</span>
+      <span class="ring">対象年齢外</span>
     </div>
     空きがあっても入園できるとは限りません。出典：広島市「保育園等の空き状況」`;
   return div;
@@ -199,14 +207,24 @@ function render() {
   for (const f of window.FACILITIES) {
     const n = f.vacancy[age];
     if (onlyOpen && !(n > 0)) continue;
-    const na = n === null;  // この年齢は受け入れ対象外
-    const icon = L.divIcon({
-      className: "",
-      html: `<div class="pin ${na ? "na" : ""}" style="background:${na ? "#cbd2d9" : color(n)}">${na ? "－" : n}</div>`,
-      iconSize: na ? [22, 22] : [34, 34],
-      iconAnchor: na ? [11, 11] : [17, 17],
-    });
-    L.marker([f.lat, f.lng], { icon, title: f.name, zIndexOffset: (n || 0) * 100 })
+    const open = n > 0;
+    const icon = open
+      ? L.divIcon({
+          className: "",
+          html: `<div class="pin" style="background:${color(n)}">${n}</div>`,
+          iconSize: [34, 34],
+          iconAnchor: [17, 17],
+        })
+      : L.divIcon({
+          className: "",
+          // n === null はこの年齢の受け入れ対象外
+          html: `<div class="dot-hit"><div class="dot ${n === null ? "na" : "zero"}"></div></div>`,
+          iconSize: [24, 24],
+          iconAnchor: [12, 12],
+        });
+    // 空きのある園を常に手前に。空きが多いほど上に重ねる
+    const z = open ? 1000 + n * 10 : n === null ? -1000 : 0;
+    L.marker([f.lat, f.lng], { icon, title: f.name, zIndexOffset: z })
       .bindPopup(popupHtml(f), { maxWidth: 320 })
       .addTo(layer);
   }
