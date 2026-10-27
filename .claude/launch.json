@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8000", "--directory", "web"],
       "port": 8000
+    },
+    {
+      "name": "map-8001",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8001", "--directory", "web"],
+      "port": 8001
     }
   ]
 }
