@@ -117,6 +117,49 @@
   .popup td.sel, .popup th.sel { background: #dbeafe; font-weight: 700; }
   .popup .info { font-size: 12px; line-height: 1.6; }
   .popup .note { font-size: 12px; color: #b45309; margin-top: 4px; }
+
+  [hidden] { display: none !important; }
+  .map-wrap { flex: 1; min-height: 0; position: relative; }
+  .map-wrap #map { position: absolute; inset: 0; }
+
+  /* 絞り込み・検索のパネル（地図の上に重ねる） */
+  .panel {
+    position: absolute;
+    top: 8px; left: 8px; right: 8px;
+    max-width: 420px;
+    max-height: calc(100% - 16px);
+    overflow-y: auto;
+    z-index: 1100;
+    background: var(--bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.25);
+    padding: 12px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .panel h3 { font-size: 13px; margin: 0 0 4px; color: var(--muted); font-weight: 600; }
+  .panel input[type="search"] {
+    width: 100%;
+    font-size: 16px; /* 16px未満だとiPhoneで入力時に画面が拡大される */
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips .chip { font-size: 13px; padding: 6px 10px; }
+  .results { list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: 8px; }
+  .results li + li { border-top: 1px solid var(--border); }
+  .results button {
+    width: 100%; text-align: left; background: none; border: 0; cursor: pointer;
+    padding: 8px 10px; font: inherit; color: var(--text);
+    display: flex; justify-content: space-between; gap: 8px;
+  }
+  .results button:hover { background: #f5f7fa; }
+  .results .meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
+  .results .empty { padding: 8px 10px; color: var(--muted); font-size: 13px; }
+  .panel-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .panel-foot .count { font-size: 13px; color: var(--muted); }
+  .panel-foot .actions { display: flex; gap: 6px; }
+  .chip.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
 </style>
 </head>
 <body>
@@ -129,7 +172,31 @@
     <div class="ages" role="group" aria-label="年齢"></div>
   </div>
 </header>
-<div id="map"></div>
+<div class="map-wrap">
+  <div id="map"></div>
+  <div class="panel" id="panel" hidden>
+    <div>
+      <h3><label for="q">施設名で探す</label></h3>
+      <input type="search" id="q" placeholder="例：中島、りらっくす" autocomplete="off">
+    </div>
+    <ul class="results" id="results" hidden></ul>
+    <div>
+      <h3>区</h3>
+      <div class="chips" id="wardChips"></div>
+    </div>
+    <div>
+      <h3>種類</h3>
+      <div class="chips" id="typeChips"></div>
+    </div>
+    <div class="panel-foot">
+      <span class="count" id="count"></span>
+      <span class="actions">
+        <button class="chip" id="reset">条件をクリア</button>
+        <button class="chip primary" id="closePanel">地図を見る</button>
+      </span>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="data.js"></script>
@@ -163,7 +230,8 @@ legend.addTo(map);
 const buttons = L.control({ position: "topright" });
 buttons.onAdd = () => {
   const div = L.DomUtil.create("div", "map-buttons");
-  div.innerHTML = `<button class="chip" id="onlyOpen" aria-pressed="false">空きありのみ</button>
+  div.innerHTML = `<button class="chip" id="openPanel">🔍 絞り込み・検索</button>
+    <button class="chip" id="onlyOpen" aria-pressed="false">空きありのみ</button>
     <button class="chip icon" id="locate" aria-label="現在地">📍 現在地</button>`;
   L.DomEvent.disableClickPropagation(div);
   return div;
@@ -210,10 +278,35 @@ function popupHtml(f) {
   </div>`;
 }
 
+// 絞り込みの条件。区・種類は何も選んでいなければ「すべて」
+const WARD_ORDER = ["中区", "東区", "南区", "西区", "安佐南区", "安佐北区", "安芸区", "佐伯区"];
+const TYPE_ORDER = ["保育園", "認定こども園", "小規模保育", "事業所内保育"];
+const wardSel = new Set();
+const typeSel = new Set();
+let query = "";
+
+// 検索用に表記をそろえる（全角半角・大文字小文字・空白・カタカナとひらがな）
+function fold(s) {
+  return s.normalize("NFKC").toLowerCase().replace(/\s/g, "")
+    .replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60));
+}
+const FOLDED = new Map(window.FACILITIES.map(f => [f, fold(f.name)]));
+
+function matchesFilter(f) {
+  if (wardSel.size && !wardSel.has(f.ward)) return false;
+  if (typeSel.size && !typeSel.has(f.type)) return false;
+  if (query && !FOLDED.get(f).includes(fold(query))) return false;
+  return true;
+}
+
+const markers = new Map();  // 施設 → ピン（検索結果から開くため）
+
 function render() {
   layer.clearLayers();
+  markers.clear();
   for (const f of window.FACILITIES) {
     const n = f.vacancy[age];
+    if (!matchesFilter(f)) continue;
     if (onlyOpen && !(n > 0)) continue;
     const open = n > 0;
     const icon = open
@@ -232,12 +325,120 @@ function render() {
         });
     // 空きのある園を常に手前に。空きが多いほど上に重ねる
     const z = open ? 1000 + n * 10 : n === null ? -1000 : 0;
-    L.marker([site(f).lat, site(f).lng], { icon, title: f.name, zIndexOffset: z })
+    const m = L.marker([site(f).lat, site(f).lng], { icon, title: f.name, zIndexOffset: z })
       // 開いた詳細が右上のボタンに隠れないよう、上側に余白を取って地図を動かす
-      .bindPopup(popupHtml(f), { maxWidth: 320, autoPanPaddingTopLeft: [16, 96] })
+      .bindPopup(popupHtml(f), { maxWidth: 320, autoPanPaddingTopLeft: [16, 130] })
       .addTo(layer);
+    markers.set(f, m);
+  }
+  updatePanel();
+}
+
+// ---- 絞り込み・検索のパネル ----
+const panel = document.getElementById("panel");
+const qInput = document.getElementById("q");
+const results = document.getElementById("results");
+
+function makeChips(boxId, values, sel) {
+  const box = document.getElementById(boxId);
+  for (const v of values) {
+    const b = document.createElement("button");
+    b.className = "chip";
+    b.textContent = v;
+    b.setAttribute("aria-pressed", "false");
+    b.onclick = () => {
+      sel.has(v) ? sel.delete(v) : sel.add(v);
+      b.setAttribute("aria-pressed", sel.has(v));
+      render();
+    };
+    box.appendChild(b);
   }
 }
+makeChips("wardChips", WARD_ORDER, wardSel);
+makeChips("typeChips", TYPE_ORDER, typeSel);
+
+function filterCount() {
+  return wardSel.size + typeSel.size + (query ? 1 : 0);
+}
+
+function updatePanel() {
+  const shown = window.FACILITIES.filter(matchesFilter);
+  document.getElementById("count").textContent = `${shown.length}施設が当てはまります`;
+  const n = filterCount();
+  document.getElementById("openPanel").textContent = n ? `🔍 絞り込み中（${n}）` : "🔍 絞り込み・検索";
+  document.getElementById("openPanel").setAttribute("aria-pressed", n > 0);
+
+  // 名前を入れたときだけ、当てはまる施設の一覧を出す（押すとその施設へ移動）
+  results.hidden = !query;
+  results.replaceChildren();
+  if (!query) return;
+  if (!shown.length) {
+    const li = document.createElement("li");
+    li.className = "empty";
+    li.textContent = "見つかりません。名前の一部だけで探してみてください";
+    results.appendChild(li);
+    return;
+  }
+  for (const f of shown.slice(0, 30)) {
+    const li = document.createElement("li");
+    const b = document.createElement("button");
+    const name = document.createElement("span");
+    name.textContent = f.name;
+    const meta = document.createElement("span");
+    meta.className = "meta";
+    const v = f.vacancy[age];
+    meta.textContent = `${f.ward}・${age}歳 ${v === null ? "対象外" : v > 0 ? `空き${v}` : "空きなし"}`;
+    b.append(name, meta);
+    b.onclick = () => showFacility(f);
+    li.appendChild(b);
+    results.appendChild(li);
+  }
+}
+
+function showFacility(f) {
+  if (!markers.has(f)) {  // 「空きありのみ」で隠れているときは解除して表示する
+    onlyOpen = false;
+    document.getElementById("onlyOpen").setAttribute("aria-pressed", false);
+    render();
+  }
+  panel.hidden = true;
+  map.setView([site(f).lat, site(f).lng], 16, { animate: false });
+  markers.get(f).openPopup();
+}
+
+// パネルを閉じたら、条件に当てはまる施設が収まるように地図を動かす
+function closePanel() {
+  panel.hidden = true;
+  const shown = [...markers.keys()];
+  if (filterCount() && shown.length) {
+    map.fitBounds(L.latLngBounds(shown.map(f => [site(f).lat, site(f).lng])), {
+      animate: false, maxZoom: 16, paddingTopLeft: [24, 130], paddingBottomRight: [24, 110],
+    });
+  }
+}
+
+let typing;
+qInput.addEventListener("input", () => {
+  clearTimeout(typing);
+  typing = setTimeout(() => { query = qInput.value.trim(); render(); }, 150);
+});
+qInput.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    const first = window.FACILITIES.find(matchesFilter);
+    if (query && first) showFacility(first);
+  }
+});
+document.getElementById("closePanel").onclick = closePanel;
+document.getElementById("reset").onclick = () => {
+  wardSel.clear();
+  typeSel.clear();
+  query = "";
+  qInput.value = "";
+  panel.querySelectorAll(".chips .chip").forEach(b => b.setAttribute("aria-pressed", "false"));
+  render();
+};
+L.DomEvent.disableClickPropagation(panel);
+L.DomEvent.disableScrollPropagation(panel);
 
 const ageBox = document.querySelector(".ages");
 for (const a of AGES) {
@@ -257,6 +458,10 @@ openBtn.onclick = () => {
   onlyOpen = !onlyOpen;
   openBtn.setAttribute("aria-pressed", onlyOpen);
   render();
+};
+document.getElementById("openPanel").onclick = () => {
+  panel.hidden = false;
+  qInput.focus();
 };
 document.getElementById("locate").onclick = () => map.locate({ setView: true, maxZoom: 15 });
 map.on("locationfound", e => L.circleMarker(e.latlng, { radius: 8, color: "#2563eb", fillOpacity: 0.8 }).addTo(map));
@@ -280,7 +485,7 @@ function fitStart() {
   map.invalidateSize();
   map.fitBounds(L.latLngBounds(startArea.map(f => [f.lat, f.lng])), {
     animate: false,
-    paddingTopLeft: [24, 80],
+    paddingTopLeft: [24, 130],
     paddingBottomRight: [24, 110],
   });
 }
