@@ -486,15 +486,19 @@ if (info.entry) {
 
 render();
 // 最初の表示範囲。スマホなど狭い画面で市全体を出すと中心部のピンが重なるので、
-// 中区の施設が収まる範囲から始める（広いところは縮小して見てもらう）
-const isNarrow = window.matchMedia("(max-width: 700px)").matches;
-const startArea = isNarrow
-  ? window.FACILITIES.filter(f => f.ward === "中区")
-  : window.FACILITIES;
+// 中区の施設が収まる範囲から始める（広いところは縮小して見てもらう）。
 // 右上のボタンと左下の凡例にピンが隠れないよう余白を取る。
-// 画面の大きさが確定してから合わせる（読み込み直後は地図の大きさがまだ0のことがある）
+// 地図の大きさが確定してから合わせる（裏で開いたタブなどでは、読み込み直後の大きさが0のことがある）
 function fitStart() {
   map.invalidateSize();
+  const size = map.getSize();
+  if (!size.x || !size.y) {
+    map.once("resize", fitStart);
+    return;
+  }
+  const startArea = size.x <= 700
+    ? window.FACILITIES.filter(f => f.ward === "中区")
+    : window.FACILITIES;
   map.fitBounds(L.latLngBounds(startArea.map(f => [f.lat, f.lng])), {
     animate: false,
     paddingTopLeft: [24, 130],
