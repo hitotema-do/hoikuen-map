@@ -16,6 +16,10 @@
     --zero: #7b8794;  /* 空きなしの丸。背景の地図より濃くして、園があることに気づけるように */
     --few: #f59e0b;
     --many: #16a34a;
+    /* 待機タブの色。待機が多いほど赤く */
+    --wait-few: #f59e0b;
+    --wait-mid: #ea580c;
+    --wait-many: #dc2626;
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
@@ -38,6 +42,19 @@
   h1 { font-size: 16px; margin: 0; }
   .sub { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
   .controls { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+  /* 「空き状況／待機」の切り替えタブ */
+  .tabs { display: flex; margin-top: 6px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .tab {
+    flex: 1;
+    border: 0;
+    background: var(--bg);
+    color: var(--muted);
+    font-size: 14px;
+    padding: 7px 0;
+    cursor: pointer;
+  }
+  .tab + .tab { border-left: 1px solid var(--border); }
+  .tab[aria-selected="true"] { background: var(--text); color: #fff; font-weight: 700; }
   .ages {
     display: flex;
     gap: 4px;
@@ -127,6 +144,7 @@
   .popup th, .popup td { border: 1px solid var(--border); padding: 3px 7px; text-align: center; }
   .popup th { background: #f5f7fa; font-weight: 600; }
   .popup td.sel, .popup th.sel { background: #dbeafe; font-weight: 700; }
+  .popup tr.cur th:first-child { background: var(--text); color: #fff; }
   .popup .info { font-size: 12px; line-height: 1.6; }
   .popup .note { font-size: 12px; color: #b45309; margin-top: 4px; }
 
@@ -193,7 +211,11 @@
 <header>
   <div class="title">
     <h1>広島市 保育園空きマップ</h1>
-    <span class="sub" id="dataInfo">試作</span>
+    <span class="sub" id="dataInfo"></span>
+  </div>
+  <div class="tabs" role="tablist" aria-label="表示する内容">
+    <button class="tab" role="tab" data-mode="vacancy" aria-selected="true">空き状況</button>
+    <button class="tab" role="tab" data-mode="waiting" aria-selected="false">待機児童</button>
   </div>
   <div class="controls">
     <div class="ages" role="group" aria-label="年齢"></div>
@@ -235,6 +257,13 @@
 const AGES = [0, 1, 2, 3, 4, 5];
 let age = 0;
 let onlyOpen = false;
+// 表示中のタブ。"vacancy"＝空き状況、"waiting"＝待機児童
+let mode = "vacancy";
+
+// 選んでいるタブ・年齢の人数（null はこの年齢の受け入れ対象外）
+function count(f) {
+  return (mode === "waiting" ? f.waiting : f.vacancy)[age];
+}
 
 const map = L.map("map", { zoomSnap: 0.5 }).setView([34.385, 132.455], 14);
 // 背景地図は国土地理院の淡色地図。ファイルを直接開いても表示でき、登録も不要。
@@ -245,18 +274,27 @@ L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 const legend = L.control({ position: "bottomleft" });
-legend.onAdd = () => {
-  const div = L.DomUtil.create("div", "legend-box");
-  div.innerHTML = `<div class="legend">
-      <span style="--c:var(--many)">3人以上</span>
-      <span style="--c:var(--few)">1〜2人</span>
-      <span class="small" style="--c:var(--none)">空きなし</span>
-      <span class="ring">対象年齢外</span>
-    </div>
-    広島市の公式サービスではありません。空きがあっても入園できるとは限らないため、最新の状況は各区の福祉課で確認してください。出典：広島市「保育園等の空き状況」`;
-  return div;
-};
+legend.onAdd = () => L.DomUtil.create("div", "legend-box");
 legend.addTo(map);
+
+function updateLegend() {
+  legend.getContainer().innerHTML = mode === "waiting"
+    ? `<div class="legend">
+        <span style="--c:var(--wait-many)">6人以上</span>
+        <span style="--c:var(--wait-mid)">3〜5人</span>
+        <span style="--c:var(--wait-few)">1〜2人</span>
+        <span class="small" style="--c:var(--none)">待機なし</span>
+        <span class="ring">対象年齢外</span>
+      </div>
+      待機＝その園を第1希望にして入園を待っている人数。0人でも希望者がいないとは限りません。広島市の公式サービスではありません。出典：広島市「保育園等の空き状況」`
+    : `<div class="legend">
+        <span style="--c:var(--many)">3人以上</span>
+        <span style="--c:var(--few)">1〜2人</span>
+        <span class="small" style="--c:var(--none)">空きなし</span>
+        <span class="ring">対象年齢外</span>
+      </div>
+      広島市の公式サービスではありません。空きがあっても入園できるとは限らないため、最新の状況は各区の福祉課で確認してください。出典：広島市「保育園等の空き状況」`;
+}
 
 const buttons = L.control({ position: "topright" });
 buttons.onAdd = () => {
@@ -272,6 +310,11 @@ buttons.addTo(map);
 const layer = L.layerGroup().addTo(map);
 
 function color(n) {
+  if (mode === "waiting") {
+    if (n >= 6) return "var(--wait-many)";
+    if (n >= 3) return "var(--wait-mid)";
+    return "var(--wait-few)";
+  }
   if (n >= 3) return "var(--many)";
   if (n >= 1) return "var(--few)";
   return "var(--none)";
@@ -293,8 +336,8 @@ function popupHtml(f) {
     <div class="type">${f.type}</div>
     <table>
       <tr><th></th>${head}</tr>
-      <tr><th>空き</th>${row(f.vacancy)}</tr>
-      <tr><th>待機</th>${row(f.waiting)}</tr>
+      <tr class="${mode === "vacancy" ? "cur" : ""}"><th>空き</th>${row(f.vacancy)}</tr>
+      <tr class="${mode === "waiting" ? "cur" : ""}"><th>待機</th>${row(f.waiting)}</tr>
     </table>
     <div class="info">
       ${f.over3
@@ -336,10 +379,10 @@ function render() {
   layer.clearLayers();
   markers.clear();
   for (const f of window.FACILITIES) {
-    const n = f.vacancy[age];
+    const n = count(f);
     if (!matchesFilter(f)) continue;
     if (onlyOpen && !(n > 0)) continue;
-    const open = n > 0;
+    const open = n > 0;  // 空き状況タブでは空きあり、待機タブでは待機あり
     const icon = open
       ? L.divIcon({
           className: "",
@@ -354,7 +397,7 @@ function render() {
           iconSize: [24, 24],
           iconAnchor: [12, 12],
         });
-    // 空きのある園を常に手前に。空きが多いほど上に重ねる
+    // 人数のある園を常に手前に。多いほど上に重ねる
     const z = open ? 1000 + n * 10 : n === null ? -1000 : 0;
     const m = L.marker([site(f).lat, site(f).lng], { icon, title: f.name, zIndexOffset: z })
       // 開いた詳細が右上のボタンに隠れないよう、上側に余白を取って地図を動かす
@@ -417,8 +460,11 @@ function updatePanel() {
     name.textContent = f.name;
     const meta = document.createElement("span");
     meta.className = "meta";
-    const v = f.vacancy[age];
-    meta.textContent = `${f.ward}・${age}歳 ${v === null ? "対象外" : v > 0 ? `空き${v}` : "空きなし"}`;
+    const v = count(f);
+    const label = mode === "waiting"
+      ? (v > 0 ? `待機${v}` : "待機なし")
+      : (v > 0 ? `空き${v}` : "空きなし");
+    meta.textContent = `${f.ward}・${age}歳 ${v === null ? "対象外" : label}`;
     b.append(name, meta);
     b.onclick = () => showFacility(f);
     li.appendChild(b);
@@ -427,7 +473,7 @@ function updatePanel() {
 }
 
 function showFacility(f) {
-  if (!markers.has(f)) {  // 「空きありのみ」で隠れているときは解除して表示する
+  if (!markers.has(f)) {  // 「空きありのみ」「待機ありのみ」で隠れているときは解除して表示する
     onlyOpen = false;
     document.getElementById("onlyOpen").setAttribute("aria-pressed", false);
     render();
@@ -494,6 +540,18 @@ openBtn.onclick = () => {
   openBtn.setAttribute("aria-pressed", onlyOpen);
   render();
 };
+
+// タブの切り替え。年齢・絞り込み・地図の位置はそのままで、ピンの中身だけ変える
+const tabs = document.querySelectorAll(".tab");
+function setMode(m) {
+  mode = m;
+  tabs.forEach(t => t.setAttribute("aria-selected", t.dataset.mode === m));
+  openBtn.textContent = m === "waiting" ? "待機ありのみ" : "空きありのみ";
+  map.closePopup();
+  updateLegend();
+  render();
+}
+tabs.forEach(t => t.onclick = () => setMode(t.dataset.mode));
 document.getElementById("openPanel").onclick = () => {
   panel.hidden = false;
   qInput.focus();
@@ -504,9 +562,10 @@ map.on("locationfound", e => L.circleMarker(e.latlng, { radius: 8, color: "#2563
 // 見出しの「何月入所分・いつ時点か」は、毎月の更新で data.js に書かれる
 const info = window.DATA_INFO || {};
 if (info.entry) {
-  document.getElementById("dataInfo").textContent = `${info.entry}入所分（${info.asOf}時点）・試作`;
+  document.getElementById("dataInfo").textContent = `${info.entry}入所分（${info.asOf}時点）`;
 }
 
+updateLegend();
 render();
 // 最初の表示範囲。スマホなど狭い画面で市全体を出すと中心部のピンが重なるので、
 // 中区の施設が収まる範囲から始める（広いところは縮小して見てもらう）。
