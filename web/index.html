@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>広島市 保育園空きマップ</title>
 <!-- ホーム画面に追加したときのアイコンと名前 -->
 <link rel="manifest" href="manifest.webmanifest">
@@ -15,17 +15,22 @@
   :root {
     --bg: #ffffff;
     --text: #1f2933;
-    --muted: #616e7c;
+    --muted: #52606d;
     --border: #d9e2ec;
+    --line: #eef1f4;
     --accent: #2563eb;
+    --dark: #1f2933;
     --none: #9aa5b1;
     --zero: #7b8794;  /* 空きなしの丸。背景の地図より濃くして、園があることに気づけるように */
-    --few: #f59e0b;
-    --many: #16a34a;
+    /* 1〜2人は明るい黄色に黒い字、多いほど濃い色に白い字（色の違いが分かりにくい人でも濃さで区別できる） */
+    --few: #fbbf24;
+    --many: #15803d;
     /* 待機タブの色。待機が多いほど赤く */
-    --wait-few: #f59e0b;
+    --wait-few: #fbbf24;
     --wait-mid: #ea580c;
     --wait-many: #dc2626;
+    --shadow: 0 2px 8px rgba(0,0,0,.18);
+    --sheet-h: 40vh;  /* 下の一覧の高さ。JSで書き換える */
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
@@ -33,74 +38,179 @@
     font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", "Meiryo", sans-serif;
     color: var(--text);
     background: var(--bg);
-    display: flex;
-    flex-direction: column;
-    height: 100dvh;
+    overflow: hidden;
   }
-  /* 上部は「タイトル1行＋操作1行」に収めて、地図の面積を最大にする */
-  header {
-    padding: 8px 12px;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
+  button, input, select { font: inherit; color: inherit; }
+  [hidden] { display: none !important; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* 地図は画面いっぱい。上に検索窓、下に一覧を重ねる */
+  #map { position: fixed; inset: 0; }
+  .leaflet-tile-pane { filter: grayscale(0.6) contrast(0.8) brightness(1.08); }
+  /* 地図の出典表示が下の一覧に隠れないよう、一覧のすぐ上に出す */
+  .leaflet-bottom.leaflet-right { bottom: var(--sheet-h); transition: bottom .25s; }
+
+  /* ---- 上：検索窓とボタンの列 ---- */
+  .top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: calc(10px + env(safe-area-inset-top)) 12px 0;
     z-index: 1000;
+    display: flex; flex-direction: column; gap: 8px;
+    pointer-events: none;  /* すき間の地図は触れるように */
   }
-  .title { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
-  h1 { font-size: 16px; margin: 0; }
-  .sub { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
-  .controls { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
-  /* 「空き状況／待機」の切り替えタブ */
-  .tabs { display: flex; margin-top: 6px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .tab {
-    flex: 1;
-    border: 0;
+  .top > * { pointer-events: auto; }
+  .searchbar {
+    display: flex; align-items: center; gap: 6px;
+    height: 48px;
+    padding: 0 4px 0 14px;
     background: var(--bg);
-    color: var(--muted);
-    font-size: 14px;
-    padding: 7px 0;
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+  }
+  .searchbar svg { flex: none; }
+  .searchbar input {
+    flex: 1; min-width: 0;
+    border: 0; outline: none; background: transparent;
+    font-size: 16px; /* 16px未満だとiPhoneで入力時に画面が拡大される */
+  }
+  .searchbar input::-webkit-search-cancel-button { display: none; }
+  .round {
+    position: relative;
+    flex: none;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 0;
+    background: #eef2f7;
+    display: flex; align-items: center; justify-content: center;
     cursor: pointer;
   }
-  .tab + .tab { border-left: 1px solid var(--border); }
-  .tab[aria-selected="true"] { background: var(--text); color: #fff; font-weight: 700; }
-  .ages {
-    display: flex;
-    gap: 4px;
-    flex: 1;
-    min-width: 0;
+  .round.plain { background: transparent; }
+  .badge {
+    position: absolute; top: 2px; right: 2px;
+    min-width: 16px; height: 16px; padding: 0 4px;
+    border-radius: 8px;
+    background: var(--accent); color: #fff;
+    font-size: 10px; font-weight: 700; line-height: 16px;
+  }
+  .chiprow {
+    display: flex; gap: 6px;
     overflow-x: auto;
     scrollbar-width: none;
+    padding-bottom: 6px;  /* 影が切れないように */
   }
-  .ages::-webkit-scrollbar { display: none; }
+  .chiprow::-webkit-scrollbar { display: none; }
   .chip {
     flex: none;
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: var(--bg);
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .chip[aria-pressed="true"], .chip.on { background: var(--dark); color: #fff; font-weight: 700; }
+  /* 年齢・表示内容はスマホの選択画面で選ぶ。見た目はボタンと同じにする */
+  select.chip {
+    appearance: none; -webkit-appearance: none;
+    padding-right: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231f2933' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 11px center;
+  }
+  select.chip.on {
+    background-color: var(--dark);
+    background-repeat: no-repeat;
+    background-position: right 11px center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  }
+  select.chip option { color: var(--text); background: #fff; font-weight: 400; }
+
+  /* 現在地ボタン。一覧のすぐ上に浮かせる */
+  .fab {
+    position: fixed;
+    right: 14px;
+    bottom: calc(var(--sheet-h) + 14px);
+    transition: bottom .25s;
+    z-index: 1000;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 0;
+    background: var(--bg);
+    box-shadow: var(--shadow);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+
+  /* ---- 下：引き出す一覧 ---- */
+  .sheet {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: var(--sheet-h);
+    z-index: 1001;
+    background: var(--bg);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 16px rgba(0,0,0,.14);
+    display: flex; flex-direction: column;
+    transition: height .25s;
+  }
+  body.dragging .sheet, body.dragging .fab, body.dragging .leaflet-bottom { transition: none; }
+  /* 一覧をいっぱいに広げたときは、現在地ボタンが上のボタンと重なるので隠す */
+  body.sheet-full .fab { display: none; }
+  .sheet-head {
+    flex: none;
+    padding: 8px 18px 10px;
+    cursor: grab;
+    touch-action: none;  /* 指で上下に動かすのを、画面のスクロールと取り合わないように */
+    user-select: none;
+  }
+  .handle { width: 40px; height: 5px; border-radius: 3px; background: #cbd2d9; margin: 0 auto 8px; }
+  .sheet-head h2 { margin: 0; font-size: 18px; font-weight: 800; }
+  .sheet-head .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .sorts { flex: none; display: flex; gap: 6px; padding: 0 18px 10px; border-bottom: 1px solid var(--border); }
+  .sort {
+    height: 32px; padding: 0 12px;
+    border-radius: 999px;
     border: 1px solid var(--border);
     background: var(--bg);
-    color: var(--text);
-    border-radius: 999px;
-    padding: 6px 11px;
-    font-size: 14px;
-    line-height: 1;
+    font-size: 13px;
     cursor: pointer;
-    white-space: nowrap;
   }
-  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
-  .ages .chip { flex: 1; max-width: 64px; padding: 6px 0; }
-  .chip.icon { padding: 6px 9px; }
-  /* 地図の右上に重ねるボタン */
-  .map-buttons { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-  .map-buttons .chip { box-shadow: 0 1px 4px rgba(0,0,0,.25); font-size: 13px; }
-
-  /* 凡例と注意書きは地図の左下に重ねる */
-  .legend-box {
-    background: rgba(255,255,255,.92);
-    border-radius: 8px;
-    padding: 6px 8px;
-    box-shadow: 0 1px 4px rgba(0,0,0,.2);
-    font-size: 11px;
-    color: var(--muted);
-    max-width: 260px;
-    line-height: 1.5;
+  .sort[aria-pressed="true"] { background: var(--dark); border-color: var(--dark); color: #fff; }
+  .sheet-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+  .list { list-style: none; margin: 0; padding: 0; }
+  .list button {
+    width: 100%;
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 18px;
+    border: 0; border-bottom: 1px solid var(--line);
+    background: none;
+    text-align: left;
+    cursor: pointer;
   }
-  .legend { display: flex; gap: 10px; flex-wrap: wrap; color: var(--text); font-size: 12px; }
+  .list button:hover { background: #f5f7fa; }
+  .num {
+    flex: none;
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    line-height: 1;
+  }
+  .num small { font-size: 10px; font-weight: 700; }
+  .num b { font-size: 20px; font-weight: 800; margin-top: 2px; }
+  .num.zero { background: #eef1f4; color: var(--muted); }
+  .num.zero b { font-size: 13px; }
+  .row-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .row-text .name { font-size: 15px; font-weight: 700; }
+  .row-text .meta { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .empty { padding: 16px 18px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+  .sheet-foot { padding: 12px 18px calc(16px + env(safe-area-inset-bottom)); font-size: 11px; color: var(--muted); line-height: 1.6; }
+  .sheet-foot .app { font-size: 12px; font-weight: 700; color: var(--text); }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; color: var(--text); font-size: 12px; margin-bottom: 6px; }
   .legend span::before {
     content: "";
     display: inline-block;
@@ -110,15 +220,18 @@
     vertical-align: -1px;
     background: var(--c);
   }
-  #map { flex: 1; min-height: 0; }
-  .leaflet-tile-pane { filter: grayscale(1) contrast(0.6) brightness(1.2); }
+  .legend span.small::before {
+    content: "0"; width: 12px; height: 12px; background: var(--zero);
+    color: #fff; font: 800 8px/12px system-ui, sans-serif; text-align: center; vertical-align: -2px;
+  }
+  .legend span.ring::before { width: 6px; height: 6px; background: #fff; border: 2px solid var(--none); vertical-align: 0; }
 
+  /* ---- 地図のピン ---- */
   .pin {
-    width: 34px; height: 34px;
+    width: 36px; height: 36px;
     border-radius: 50%;
     border: 3px solid #fff;
-    box-shadow: 0 1px 4px rgba(0,0,0,.4);
-    color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,.35);
     font-weight: 800;
     font-size: 16px;
     display: flex; align-items: center; justify-content: center;
@@ -138,11 +251,6 @@
   }
   .dot.zero::after { content: "0"; color: #fff; font: 800 11px system-ui, sans-serif; }
   .dot.na { width: 9px; height: 9px; border: 2px solid var(--none); background: #fff; opacity: .6; }
-  .legend span.small::before {
-    content: "0"; width: 12px; height: 12px; background: var(--zero);
-    color: #fff; font: 800 8px/12px system-ui, sans-serif; text-align: center; vertical-align: -2px;
-  }
-  .legend span.ring::before { width: 6px; height: 6px; background: #fff; border: 2px solid var(--none); vertical-align: 0; }
 
   .popup h2 { font-size: 15px; margin: 0 0 2px; }
   .popup .type { font-size: 12px; color: var(--muted); }
@@ -154,25 +262,21 @@
   .popup .info { font-size: 12px; line-height: 1.6; }
   .popup .note { font-size: 12px; color: #b45309; margin-top: 4px; }
 
-  [hidden] { display: none !important; }
-  .map-wrap { flex: 1; min-height: 0; position: relative; }
-  .map-wrap #map { position: absolute; inset: 0; }
-
-  /* 絞り込み・検索のパネル（地図の上に重ねる） */
+  /* ---- 区・種類の絞り込みパネル ---- */
   .panel {
-    position: absolute;
-    top: 8px; left: 8px; right: 8px;
+    position: fixed;
+    top: calc(10px + env(safe-area-inset-top)); left: 12px; right: 12px;
     max-width: 420px;
-    max-height: calc(100% - 16px);
+    max-height: calc(100% - 20px);
     overflow-y: auto;
     z-index: 1100;
     background: var(--bg);
-    border-radius: 12px;
+    border-radius: 16px;
     box-shadow: 0 4px 16px rgba(0,0,0,.25);
     padding: 12px;
-    display: flex; flex-direction: column; gap: 10px;
+    display: flex; flex-direction: column; gap: 12px;
   }
-  .panel h3 { font-size: 13px; margin: 0 0 4px; color: var(--muted); font-weight: 600; }
+  .panel h3 { font-size: 13px; margin: 0 0 6px; color: var(--muted); font-weight: 600; }
   /* パネルの上の「閉じる」と下の「地図を見る」は、中身が長くても常に見えるように固定する */
   .panel-head {
     position: sticky; top: -12px; z-index: 1;
@@ -185,75 +289,105 @@
     position: sticky; bottom: -12px; z-index: 1;
     margin: 0 -12px -12px; padding: 8px 12px 10px;
     background: var(--bg); border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
   }
-  /* 検索結果は一覧の中だけで動かし、下の区・種類のボタンまで押し出さない */
-  .results { max-height: 40vh; overflow-y: auto; }
-  .panel input[type="search"] {
-    width: 100%;
-    font-size: 16px; /* 16px未満だとiPhoneで入力時に画面が拡大される */
-    padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-  }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .chips .chip { font-size: 13px; padding: 6px 10px; }
-  .results { list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: 8px; }
-  .results li + li { border-top: 1px solid var(--border); }
-  .results button {
-    width: 100%; text-align: left; background: none; border: 0; cursor: pointer;
-    padding: 8px 10px; font: inherit; color: var(--text);
-    display: flex; justify-content: space-between; gap: 8px;
-  }
-  .results button:hover { background: #f5f7fa; }
-  .results .meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
-  .results .empty { padding: 8px 10px; color: var(--muted); font-size: 13px; }
-  .panel-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
   .panel-foot .count { font-size: 13px; color: var(--muted); }
   .panel-foot .actions { display: flex; gap: 6px; }
-  .chip.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+  .panel .chip { box-shadow: none; border-color: var(--border); font-size: 13px; height: 34px; padding: 0 12px; }
+  .panel .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); }
+  .panel .chip.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* 広い画面（パソコン・タブレット）では、一覧を左側に縦長に置く */
+  @media (min-width: 768px) {
+    .top { right: auto; width: 400px; }
+    .sheet {
+      left: 12px; right: auto; bottom: 12px;
+      top: calc(var(--top-h, 110px) + 4px);
+      width: 400px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .sheet-head { cursor: default; padding-top: 14px; }
+    .handle { display: none; }
+    .fab { bottom: 24px; }
+    .leaflet-bottom.leaflet-right { bottom: 0; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <div class="title">
-    <h1>広島市 保育園空きマップ</h1>
-    <span class="sub" id="dataInfo"></span>
+<h1 class="visually-hidden">広島市 保育園空きマップ</h1>
+<div id="map"></div>
+
+<div class="top" id="top">
+  <div class="searchbar">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#52606d" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+    <input type="search" id="q" placeholder="園の名前で探す（例：中島）" autocomplete="off" aria-label="園の名前で探す" enterkeyhint="search">
+    <button class="round plain" id="clearQ" aria-label="入力を消す" hidden>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#52606d" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button class="round" id="openPanel" aria-label="区・種類で絞り込む">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f2933" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+      <span class="badge" id="filterBadge" hidden></span>
+    </button>
   </div>
-  <div class="tabs" role="tablist" aria-label="表示する内容">
-    <button class="tab" role="tab" data-mode="vacancy" aria-selected="true">空き状況</button>
-    <button class="tab" role="tab" data-mode="waiting" aria-selected="false">待機児童</button>
+  <div class="chiprow" id="chiprow">
+    <select class="chip on" id="age" aria-label="お子さんの年齢"></select>
+    <select class="chip" id="mode" aria-label="表示する内容">
+      <option value="vacancy">空き状況</option>
+      <option value="waiting">待機児童</option>
+    </select>
+    <button class="chip" id="onlyOpen" aria-pressed="false">空きありのみ</button>
+    <span id="activeFilters" style="display: contents"></span>
   </div>
-  <div class="controls">
-    <div class="ages" role="group" aria-label="年齢"></div>
+</div>
+
+<button class="fab" id="locate" aria-label="現在地を表示">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+</button>
+
+<section class="sheet" id="sheet" aria-labelledby="listTitle">
+  <div class="sheet-head" id="sheetHead">
+    <div class="handle"></div>
+    <h2 id="listTitle"></h2>
+    <div class="sub" id="listSub"></div>
   </div>
-</header>
-<div class="map-wrap">
-  <div id="map"></div>
-  <div class="panel" id="panel" hidden>
-    <div class="panel-head">
-      <strong>絞り込み・検索</strong>
-      <button class="chip" id="closePanelTop" aria-label="閉じる">✕ 閉じる</button>
+  <div class="sorts" role="group" aria-label="並べ方">
+    <button class="sort" data-sort="count" aria-pressed="true">多い順</button>
+    <button class="sort" data-sort="near" aria-pressed="false">近い順</button>
+    <button class="sort" data-sort="name" aria-pressed="false">名前順</button>
+  </div>
+  <div class="sheet-body" id="sheetBody">
+    <ul class="list" id="list"></ul>
+    <div class="sheet-foot">
+      <div class="legend" id="legend"></div>
+      <div id="legendNote"></div>
+      <div class="app" style="margin-top: 8px">広島市 保育園空きマップ</div>
+      <div id="dataInfo"></div>
     </div>
-    <div>
-      <h3><label for="q">施設名で探す</label></h3>
-      <input type="search" id="q" placeholder="例：中島、りらっくす" autocomplete="off">
-    </div>
-    <ul class="results" id="results" hidden></ul>
-    <div>
-      <h3>区</h3>
-      <div class="chips" id="wardChips"></div>
-    </div>
-    <div>
-      <h3>種類</h3>
-      <div class="chips" id="typeChips"></div>
-    </div>
-    <div class="panel-foot">
-      <span class="count" id="count"></span>
-      <span class="actions">
-        <button class="chip" id="reset">条件をクリア</button>
-        <button class="chip primary" id="closePanel">地図を見る</button>
-      </span>
-    </div>
+  </div>
+</section>
+
+<div class="panel" id="panel" hidden>
+  <div class="panel-head">
+    <strong>区・種類で絞り込む</strong>
+    <button class="chip" id="closePanelTop" aria-label="閉じる">✕ 閉じる</button>
+  </div>
+  <div>
+    <h3>区</h3>
+    <div class="chips" id="wardChips"></div>
+  </div>
+  <div>
+    <h3>種類</h3>
+    <div class="chips" id="typeChips"></div>
+  </div>
+  <div class="panel-foot">
+    <span class="count" id="count"></span>
+    <span class="actions">
+      <button class="chip" id="reset">条件をクリア</button>
+      <button class="chip primary" id="closePanel">地図を見る</button>
+    </span>
   </div>
 </div>
 
@@ -263,55 +397,31 @@
 const AGES = [0, 1, 2, 3, 4, 5];
 let age = 0;
 let onlyOpen = false;
-// 表示中のタブ。"vacancy"＝空き状況、"waiting"＝待機児童
+// 表示中の内容。"vacancy"＝空き状況、"waiting"＝待機児童
 let mode = "vacancy";
+// 一覧の並べ方。"count"＝多い順、"near"＝近い順、"name"＝名前順
+let sortBy = "count";
+let here = null;  // 現在地（「現在地」を押したあと）
 
-// 選んでいるタブ・年齢の人数（null はこの年齢の受け入れ対象外）
+const wide = matchMedia("(min-width: 768px)");
+
+// 選んでいる内容・年齢の人数（null はこの年齢の受け入れ対象外）
 function count(f) {
   return (mode === "waiting" ? f.waiting : f.vacancy)[age];
 }
 
-const map = L.map("map", { zoomSnap: 0.5 }).setView([34.385, 132.455], 14);
+const map = L.map("map", { zoomSnap: 0.5, zoomControl: false }).setView([34.385, 132.455], 14);
 // 背景地図は国土地理院の淡色地図。ファイルを直接開いても表示でき、登録も不要。
-// 記号が多いので白黒・淡色にしてピンを目立たせる（CSSの .leaflet-tile-pane）
+// 少し色を抜いてピンを目立たせる（CSSの .leaflet-tile-pane）
 L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png", {
   maxZoom: 18,
   attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>',
 }).addTo(map);
-
-const legend = L.control({ position: "bottomleft" });
-legend.onAdd = () => L.DomUtil.create("div", "legend-box");
-legend.addTo(map);
-
-function updateLegend() {
-  legend.getContainer().innerHTML = mode === "waiting"
-    ? `<div class="legend">
-        <span style="--c:var(--wait-many)">6人以上</span>
-        <span style="--c:var(--wait-mid)">3〜5人</span>
-        <span style="--c:var(--wait-few)">1〜2人</span>
-        <span class="small" style="--c:var(--none)">待機なし</span>
-        <span class="ring">対象年齢外</span>
-      </div>
-      待機＝その園を第1希望にして入園を待っている人数。0人でも希望者がいないとは限りません。広島市の公式サービスではありません。出典：広島市「保育園等の空き状況」`
-    : `<div class="legend">
-        <span style="--c:var(--many)">3人以上</span>
-        <span style="--c:var(--few)">1〜2人</span>
-        <span class="small" style="--c:var(--none)">空きなし</span>
-        <span class="ring">対象年齢外</span>
-      </div>
-      広島市の公式サービスではありません。空きがあっても入園できるとは限らないため、最新の状況は各区の福祉課で確認してください。出典：広島市「保育園等の空き状況」`;
+// スマホは指で拡大縮小できるので、＋−ボタンは広い画面だけ出す
+const zoom = L.control.zoom({ position: "bottomright" });
+function updateZoomControl() {
+  wide.matches ? zoom.addTo(map) : zoom.remove();
 }
-
-const buttons = L.control({ position: "topright" });
-buttons.onAdd = () => {
-  const div = L.DomUtil.create("div", "map-buttons");
-  div.innerHTML = `<button class="chip" id="openPanel">🔍 絞り込み・検索</button>
-    <button class="chip" id="onlyOpen" aria-pressed="false">空きありのみ</button>
-    <button class="chip icon" id="locate" aria-label="現在地">📍 現在地</button>`;
-  L.DomEvent.disableClickPropagation(div);
-  return div;
-};
-buttons.addTo(map);
 
 const layer = L.layerGroup().addTo(map);
 
@@ -324,6 +434,10 @@ function color(n) {
   if (n >= 3) return "var(--many)";
   if (n >= 1) return "var(--few)";
   return "var(--none)";
+}
+// 明るい黄色の上は黒い字、それ以外は白い字
+function textColor(n) {
+  return n < 3 ? "var(--text)" : "#fff";
 }
 
 // 年齢によって保育する場所が違う施設は、選んでいる年齢の場所にピンを立てる
@@ -379,7 +493,79 @@ function matchesFilter(f) {
   return true;
 }
 
-const markers = new Map();  // 施設 → ピン（検索結果から開くため）
+// ---- 下の一覧の高さ（スマホ）----
+// peek＝見出しだけ、half＝半分、full＝ほぼ全画面。見出しを指で上下に動かすか、押して切り替える
+const sheet = document.getElementById("sheet");
+const sheetHead = document.getElementById("sheetHead");
+const sheetBody = document.getElementById("sheetBody");
+let sheetState = "half";
+
+function sheetHeights() {
+  const H = window.innerHeight;
+  const topH = document.getElementById("top").offsetHeight;
+  return {
+    peek: sheetHead.offsetHeight + 1,
+    half: Math.round(H * 0.42),
+    full: H - topH - 8,
+  };
+}
+// 動いている途中の高さではなく、行き先の高さを返す
+function sheetPx() {
+  return wide.matches ? 0 : sheetHeights()[sheetState];
+}
+function applySheetHeight(h) {
+  document.documentElement.style.setProperty("--sheet-h", `${h}px`);
+}
+function setSheet(state) {
+  sheetState = state;
+  document.body.classList.toggle("sheet-full", state === "full" && !wide.matches);
+  if (wide.matches) {
+    document.documentElement.style.setProperty("--sheet-h", "0px");
+    return;
+  }
+  applySheetHeight(sheetHeights()[state]);
+}
+
+let drag = null;
+sheetHead.addEventListener("pointerdown", e => {
+  if (wide.matches) return;
+  drag = { y: e.clientY, h: sheet.offsetHeight, moved: false };
+  document.body.classList.add("dragging");
+  sheetHead.setPointerCapture(e.pointerId);
+});
+sheetHead.addEventListener("pointermove", e => {
+  if (!drag) return;
+  const dy = drag.y - e.clientY;
+  if (Math.abs(dy) > 6) drag.moved = true;
+  const hs = sheetHeights();
+  applySheetHeight(Math.max(hs.peek, Math.min(hs.full, drag.h + dy)));
+});
+function endDrag() {
+  if (!drag) return;
+  document.body.classList.remove("dragging");
+  const hs = sheetHeights();
+  if (!drag.moved) {
+    // 押しただけのときは、たたんでいれば半分まで出し、出ていればたたむ
+    setSheet(sheetState === "peek" ? "half" : "peek");
+  } else {
+    // 指を離した位置に一番近い高さにそろえる
+    const h = sheet.offsetHeight;
+    const near = Object.entries(hs).sort((a, b) => Math.abs(a[1] - h) - Math.abs(b[1] - h))[0][0];
+    setSheet(near);
+  }
+  drag = null;
+}
+sheetHead.addEventListener("pointerup", endDrag);
+sheetHead.addEventListener("pointercancel", endDrag);
+
+// 地図に重なっている部分（上の検索窓・下の一覧）を避けて、園を表示するための余白
+function mapPadding() {
+  const topH = document.getElementById("top").offsetHeight;
+  if (wide.matches) return { tl: [424, 24], br: [24, 24] };
+  return { tl: [16, topH + 8], br: [16, sheetHeights().peek + 16] };
+}
+
+const markers = new Map();  // 施設 → ピン（一覧から開くため）
 
 function render() {
   layer.clearLayers();
@@ -388,13 +574,13 @@ function render() {
     const n = count(f);
     if (!matchesFilter(f)) continue;
     if (onlyOpen && !(n > 0)) continue;
-    const open = n > 0;  // 空き状況タブでは空きあり、待機タブでは待機あり
+    const open = n > 0;  // 空き状況では空きあり、待機児童では待機あり
     const icon = open
       ? L.divIcon({
           className: "",
-          html: `<div class="pin" style="background:${color(n)}">${n}</div>`,
-          iconSize: [34, 34],
-          iconAnchor: [17, 17],
+          html: `<div class="pin" style="background:${color(n)};color:${textColor(n)}">${n}</div>`,
+          iconSize: [36, 36],
+          iconAnchor: [18, 18],
         })
       : L.divIcon({
           className: "",
@@ -405,19 +591,127 @@ function render() {
         });
     // 人数のある園を常に手前に。多いほど上に重ねる
     const z = open ? 1000 + n * 10 : n === null ? -1000 : 0;
+    const pad = mapPadding();
     const m = L.marker([site(f).lat, site(f).lng], { icon, title: f.name, zIndexOffset: z })
-      // 開いた詳細が右上のボタンに隠れないよう、上側に余白を取って地図を動かす
-      .bindPopup(popupHtml(f), { maxWidth: 320, autoPanPaddingTopLeft: [16, 130] })
+      .bindPopup(popupHtml(f), { maxWidth: 320, autoPanPaddingTopLeft: pad.tl, autoPanPaddingBottomRight: pad.br })
       .addTo(layer);
+    // ピンを押したら一覧をたたんで、開いた詳細が隠れないようにする
+    m.on("click", () => { if (!wide.matches) setSheet("peek"); });
     markers.set(f, m);
   }
   updatePanel();
+  updateList();
 }
 
-// ---- 絞り込み・検索のパネル ----
+// ---- 一覧 ----
+const list = document.getElementById("list");
+
+// 住所から町名だけを取り出す（「広島市中区大手町三丁目9-25」→「大手町三丁目」）
+function town(f) {
+  return f.address.replace(/^広島市/, "").replace(f.ward, "").replace(/[0-9０-９\-－−‐].*$/, "");
+}
+function distKm(f, from) {
+  return map.distance(from, [site(f).lat, site(f).lng]) / 1000;
+}
+
+function updateList() {
+  const label = mode === "waiting" ? "待機" : "空き";
+  const title = document.getElementById("listTitle");
+  const sub = document.getElementById("listSub");
+  let items;
+  if (query) {
+    // 名前で探しているときは、市内全体から当てはまる園をすべて出す
+    items = window.FACILITIES.filter(matchesFilter);
+    title.textContent = `「${query}」の検索結果　${items.length}件`;
+    sub.textContent = (wardSel.size || typeSel.size) ? "市内全体（区・種類で絞り込み中）" : "市内全体";
+  } else {
+    // ふだんは、地図に映っている範囲で人数のある園だけを出す
+    const bounds = map.getBounds();
+    items = [...markers.keys()].filter(f => count(f) > 0 && bounds.contains([site(f).lat, site(f).lng]));
+    title.textContent = `${age}歳の${label}がある園　${items.length}件`;
+    sub.textContent = `地図に映っている範囲・${dataInfoText()}`;
+  }
+
+  const from = here || map.getCenter();
+  const sorters = {
+    count: (a, b) => (count(b) ?? -1) - (count(a) ?? -1) || a.name.localeCompare(b.name, "ja"),
+    near: (a, b) => distKm(a, from) - distKm(b, from),
+    name: (a, b) => a.name.localeCompare(b.name, "ja"),
+  };
+  items.sort(sorters[sortBy]);
+
+  list.replaceChildren();
+  if (!items.length) {
+    const li = document.createElement("li");
+    li.className = "empty";
+    li.textContent = query
+      ? "見つかりません。名前の一部だけで探してみてください。"
+      : `この範囲には${age}歳の${label}がある園がありません。地図を縮小するか、年齢を変えてみてください。`;
+    list.appendChild(li);
+    return;
+  }
+  for (const f of items.slice(0, 100)) {
+    const n = count(f);
+    const li = document.createElement("li");
+    const b = document.createElement("button");
+    const num = document.createElement("div");
+    if (n > 0) {
+      num.className = "num";
+      num.style.background = color(n);
+      num.style.color = textColor(n);
+      num.innerHTML = `<small>${label}</small><b>${n}</b>`;
+    } else {
+      num.className = "num zero";
+      num.innerHTML = `<small>${label}</small><b>${n === null ? "対象外" : "なし"}</b>`;
+    }
+    const text = document.createElement("div");
+    text.className = "row-text";
+    const name = document.createElement("span");
+    name.className = "name";
+    name.textContent = f.name;
+    const meta = document.createElement("span");
+    meta.className = "meta";
+    const dist = sortBy === "near" ? `約${distKm(f, from).toFixed(1)}km・` : "";
+    meta.textContent = `${dist}${f.type}・${f.ward}${town(f)}　${f.hours.replace("~", "〜")}`;
+    text.append(name, meta);
+    b.append(num, text);
+    b.onclick = () => showFacility(f);
+    li.appendChild(b);
+    list.appendChild(li);
+  }
+}
+
+// 地図を動かしたら、映っている範囲の園に一覧を入れ替える
+let moving;
+map.on("moveend", () => {
+  clearTimeout(moving);
+  moving = setTimeout(() => { if (!query) updateList(); }, 120);
+});
+
+document.querySelectorAll(".sort").forEach(b => b.onclick = () => {
+  sortBy = b.dataset.sort;
+  document.querySelectorAll(".sort").forEach(x => x.setAttribute("aria-pressed", x === b));
+  updateList();
+  sheetBody.scrollTop = 0;
+});
+
+function showFacility(f) {
+  if (!markers.has(f)) {  // 「空きありのみ」「待機ありのみ」で隠れているときは解除して表示する
+    setOnlyOpen(false);
+  }
+  panel.hidden = true;
+  if (!wide.matches) setSheet("peek");
+  const pad = mapPadding();
+  // 上の検索窓と下の一覧の間の真ん中に園が来るように地図を動かす
+  const target = map.project([site(f).lat, site(f).lng], 16);
+  const shift = L.point((pad.tl[0] - pad.br[0]) / 2, (pad.tl[1] - pad.br[1]) / 2);
+  map.setView(map.unproject(target.subtract(shift), 16), 16, { animate: false });
+  markers.get(f).openPopup();
+}
+
+// ---- 区・種類の絞り込みパネル ----
 const panel = document.getElementById("panel");
 const qInput = document.getElementById("q");
-const results = document.getElementById("results");
 
 function makeChips(boxId, values, sel) {
   const box = document.getElementById(boxId);
@@ -425,6 +719,7 @@ function makeChips(boxId, values, sel) {
     const b = document.createElement("button");
     b.className = "chip";
     b.textContent = v;
+    b.dataset.value = v;
     b.setAttribute("aria-pressed", "false");
     b.onclick = () => {
       sel.has(v) ? sel.delete(v) : sel.add(v);
@@ -438,55 +733,34 @@ makeChips("wardChips", WARD_ORDER, wardSel);
 makeChips("typeChips", TYPE_ORDER, typeSel);
 
 function filterCount() {
-  return wardSel.size + typeSel.size + (query ? 1 : 0);
+  return wardSel.size + typeSel.size;
 }
 
 function updatePanel() {
   const shown = window.FACILITIES.filter(matchesFilter);
   document.getElementById("count").textContent = `${shown.length}施設が当てはまります`;
   const n = filterCount();
-  document.getElementById("openPanel").textContent = n ? `🔍 絞り込み中（${n}）` : "🔍 絞り込み・検索";
-  document.getElementById("openPanel").setAttribute("aria-pressed", n > 0);
+  const badge = document.getElementById("filterBadge");
+  badge.hidden = !n;
+  badge.textContent = n;
 
-  // 名前を入れたときだけ、当てはまる施設の一覧を出す（押すとその施設へ移動）
-  results.hidden = !query;
-  results.replaceChildren();
-  if (!query) return;
-  if (!shown.length) {
-    const li = document.createElement("li");
-    li.className = "empty";
-    li.textContent = "見つかりません。名前の一部だけで探してみてください";
-    results.appendChild(li);
-    return;
+  // 選んでいる区・種類は、上のボタンの列にも出す。押すと外れる
+  const box = document.getElementById("activeFilters");
+  box.replaceChildren();
+  for (const [sel, boxId] of [[wardSel, "wardChips"], [typeSel, "typeChips"]]) {
+    for (const v of sel) {
+      const b = document.createElement("button");
+      b.className = "chip on";
+      b.textContent = `${v} ✕`;
+      b.setAttribute("aria-label", `${v}の絞り込みを外す`);
+      b.onclick = () => {
+        sel.delete(v);
+        document.querySelector(`#${boxId} [data-value="${v}"]`).setAttribute("aria-pressed", "false");
+        render();
+      };
+      box.appendChild(b);
+    }
   }
-  for (const f of shown.slice(0, 30)) {
-    const li = document.createElement("li");
-    const b = document.createElement("button");
-    const name = document.createElement("span");
-    name.textContent = f.name;
-    const meta = document.createElement("span");
-    meta.className = "meta";
-    const v = count(f);
-    const label = mode === "waiting"
-      ? (v > 0 ? `待機${v}` : "待機なし")
-      : (v > 0 ? `空き${v}` : "空きなし");
-    meta.textContent = `${f.ward}・${age}歳 ${v === null ? "対象外" : label}`;
-    b.append(name, meta);
-    b.onclick = () => showFacility(f);
-    li.appendChild(b);
-    results.appendChild(li);
-  }
-}
-
-function showFacility(f) {
-  if (!markers.has(f)) {  // 「空きありのみ」「待機ありのみ」で隠れているときは解除して表示する
-    onlyOpen = false;
-    document.getElementById("onlyOpen").setAttribute("aria-pressed", false);
-    render();
-  }
-  panel.hidden = true;
-  map.setView([site(f).lat, site(f).lng], 16, { animate: false });
-  markers.get(f).openPopup();
 }
 
 // パネルを閉じたら、条件に当てはまる施設が収まるように地図を動かす
@@ -494,23 +768,43 @@ function closePanel() {
   panel.hidden = true;
   const shown = [...markers.keys()];
   if (filterCount() && shown.length) {
-    map.fitBounds(L.latLngBounds(shown.map(f => [site(f).lat, site(f).lng])), {
-      animate: false, maxZoom: 16, paddingTopLeft: [24, 130], paddingBottomRight: [24, 110],
-    });
+    fitTo(shown);
   }
+}
+function fitTo(facilities) {
+  const pad = mapPadding();
+  map.fitBounds(L.latLngBounds(facilities.map(f => [site(f).lat, site(f).lng])), {
+    animate: false, maxZoom: 16,
+    paddingTopLeft: [pad.tl[0] + 8, pad.tl[1] + 8],
+    paddingBottomRight: [pad.br[0] + 8, (wide.matches ? 0 : sheetPx()) + 24],
+  });
 }
 
 let typing;
 qInput.addEventListener("input", () => {
   clearTimeout(typing);
-  typing = setTimeout(() => { query = qInput.value.trim(); render(); }, 150);
+  document.getElementById("clearQ").hidden = !qInput.value;
+  typing = setTimeout(() => {
+    const before = query;
+    query = qInput.value.trim();
+    render();
+    sheetBody.scrollTop = 0;
+    // 探し始めたら、結果が見えるよう一覧を出す
+    if (query && !before && sheetState === "peek") setSheet("half");
+  }, 150);
 });
 qInput.addEventListener("keydown", e => {
   if (e.key === "Enter") {
-    const first = window.FACILITIES.find(matchesFilter);
-    if (query && first) showFacility(first);
+    const first = list.querySelector("button");
+    if (query && first) { qInput.blur(); first.click(); }
   }
 });
+document.getElementById("clearQ").onclick = () => {
+  qInput.value = "";
+  query = "";
+  document.getElementById("clearQ").hidden = true;
+  render();
+};
 document.getElementById("closePanel").onclick = closePanel;
 document.getElementById("closePanelTop").onclick = closePanel;
 document.addEventListener("keydown", e => {
@@ -519,63 +813,88 @@ document.addEventListener("keydown", e => {
 document.getElementById("reset").onclick = () => {
   wardSel.clear();
   typeSel.clear();
-  query = "";
-  qInput.value = "";
   panel.querySelectorAll(".chips .chip").forEach(b => b.setAttribute("aria-pressed", "false"));
   render();
 };
-L.DomEvent.disableClickPropagation(panel);
-L.DomEvent.disableScrollPropagation(panel);
+document.getElementById("openPanel").onclick = () => { panel.hidden = false; };
 
-const ageBox = document.querySelector(".ages");
-for (const a of AGES) {
-  const b = document.createElement("button");
-  b.className = "chip";
-  b.textContent = `${a}歳`;
-  b.setAttribute("aria-pressed", a === age);
-  b.onclick = () => {
-    age = a;
-    ageBox.querySelectorAll("button").forEach((x, i) => x.setAttribute("aria-pressed", i === a));
-    render();
-  };
-  ageBox.appendChild(b);
-}
-const openBtn = document.getElementById("onlyOpen");
-openBtn.onclick = () => {
-  onlyOpen = !onlyOpen;
-  openBtn.setAttribute("aria-pressed", onlyOpen);
+// ---- 年齢・表示内容・空きありのみ ----
+const ageSel = document.getElementById("age");
+for (const a of AGES) ageSel.add(new Option(`${a}歳`, a));
+ageSel.onchange = () => {
+  age = Number(ageSel.value);
+  map.closePopup();
   render();
 };
 
-// タブの切り替え。年齢・絞り込み・地図の位置はそのままで、ピンの中身だけ変える
-const tabs = document.querySelectorAll(".tab");
-function setMode(m) {
-  mode = m;
-  tabs.forEach(t => t.setAttribute("aria-selected", t.dataset.mode === m));
-  openBtn.textContent = m === "waiting" ? "待機ありのみ" : "空きありのみ";
+const openBtn = document.getElementById("onlyOpen");
+function setOnlyOpen(v) {
+  onlyOpen = v;
+  openBtn.setAttribute("aria-pressed", v);
+  render();
+}
+openBtn.onclick = () => setOnlyOpen(!onlyOpen);
+
+const modeSel = document.getElementById("mode");
+modeSel.onchange = () => {
+  mode = modeSel.value;
+  modeSel.classList.toggle("on", mode === "waiting");
+  openBtn.textContent = mode === "waiting" ? "待機ありのみ" : "空きありのみ";
   map.closePopup();
   updateLegend();
   render();
-}
-tabs.forEach(t => t.onclick = () => setMode(t.dataset.mode));
-document.getElementById("openPanel").onclick = () => {
-  panel.hidden = false;
-  qInput.focus();
 };
-document.getElementById("locate").onclick = () => map.locate({ setView: true, maxZoom: 15 });
-map.on("locationfound", e => L.circleMarker(e.latlng, { radius: 8, color: "#2563eb", fillOpacity: 0.8 }).addTo(map));
 
-// 見出しの「何月入所分・いつ時点か」は、毎月の更新で data.js に書かれる
-const info = window.DATA_INFO || {};
-if (info.entry) {
-  document.getElementById("dataInfo").textContent = `${info.entry}入所分（${info.asOf}時点）`;
+function updateLegend() {
+  document.getElementById("legend").innerHTML = mode === "waiting"
+    ? `<span style="--c:var(--wait-many)">6人以上</span>
+       <span style="--c:var(--wait-mid)">3〜5人</span>
+       <span style="--c:var(--wait-few)">1〜2人</span>
+       <span class="small">待機なし</span>
+       <span class="ring">対象年齢外</span>`
+    : `<span style="--c:var(--many)">3人以上</span>
+       <span style="--c:var(--few)">1〜2人</span>
+       <span class="small">空きなし</span>
+       <span class="ring">対象年齢外</span>`;
+  document.getElementById("legendNote").textContent = (mode === "waiting"
+    ? "待機＝その園を第1希望にして入園を待っている人数。0人でも希望者がいないとは限りません。"
+    : "空きがあっても入園できるとは限らないため、最新の状況は各区の福祉課で確認してください。")
+    + "広島市の公式サービスではありません。出典：広島市「保育園等の空き状況」";
 }
+
+// ---- 現在地 ----
+let hereMarker = null;
+document.getElementById("locate").onclick = () => map.locate({ setView: true, maxZoom: 15 });
+map.on("locationfound", e => {
+  here = e.latlng;
+  if (hereMarker) hereMarker.remove();
+  hereMarker = L.circleMarker(e.latlng, { radius: 8, color: "#fff", weight: 3, fillColor: "#2563eb", fillOpacity: 1 }).addTo(map);
+  updateList();
+});
+map.on("locationerror", () => alert("現在地を取得できませんでした。位置情報の利用を許可しているか確認してください。"));
+
+// 「何月入所分・いつ時点か」は、毎月の更新で data.js に書かれる
+const info = window.DATA_INFO || {};
+function dataInfoText() {
+  return info.entry ? `${info.entry}入所分（${info.asOf}時点）` : "";
+}
+document.getElementById("dataInfo").textContent = dataInfoText();
+
+// 画面の大きさが変わったら（スマホの向きを変えたときなど）、一覧の高さと地図を合わせ直す
+function onResize() {
+  document.documentElement.style.setProperty("--top-h", `${document.getElementById("top").offsetHeight}px`);
+  updateZoomControl();
+  setSheet(sheetState);
+  map.invalidateSize();
+}
+wide.addEventListener("change", onResize);
+window.addEventListener("resize", onResize);
 
 updateLegend();
+onResize();
 render();
 // 最初の表示範囲。スマホなど狭い画面で市全体を出すと中心部のピンが重なるので、
 // 中区の施設が収まる範囲から始める（広いところは縮小して見てもらう）。
-// 右上のボタンと左下の凡例にピンが隠れないよう余白を取る。
 // 地図の大きさが確定してから合わせる（裏で開いたタブなどでは、読み込み直後の大きさが0のことがある）
 function fitStart() {
   map.invalidateSize();
@@ -584,14 +903,12 @@ function fitStart() {
     map.once("resize", fitStart);
     return;
   }
+  onResize();
   const startArea = size.x <= 700
     ? window.FACILITIES.filter(f => f.ward === "中区")
     : window.FACILITIES;
-  map.fitBounds(L.latLngBounds(startArea.map(f => [f.lat, f.lng])), {
-    animate: false,
-    paddingTopLeft: [24, 130],
-    paddingBottomRight: [24, 110],
-  });
+  fitTo(startArea);
+  updateList();
 }
 if (document.readyState === "complete") fitStart();
 else window.addEventListener("load", fitStart);
