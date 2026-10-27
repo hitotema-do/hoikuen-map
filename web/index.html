@@ -253,11 +253,24 @@ document.getElementById("locate").onclick = () => map.locate({ setView: true, ma
 map.on("locationfound", e => L.circleMarker(e.latlng, { radius: 8, color: "#2563eb", fillOpacity: 0.8 }).addTo(map));
 
 render();
-// 右上のボタンと左下の凡例にピンが隠れないよう余白を取る
-map.fitBounds(L.latLngBounds(window.FACILITIES.map(f => [f.lat, f.lng])), {
-  paddingTopLeft: [24, 80],
-  paddingBottomRight: [24, 110],
-});
+// 最初の表示範囲。スマホなど狭い画面で市全体を出すと中心部のピンが重なるので、
+// 中区の施設が収まる範囲から始める（広いところは縮小して見てもらう）
+const isNarrow = window.matchMedia("(max-width: 700px)").matches;
+const startArea = isNarrow
+  ? window.FACILITIES.filter(f => f.ward === "中区")
+  : window.FACILITIES;
+// 右上のボタンと左下の凡例にピンが隠れないよう余白を取る。
+// 画面の大きさが確定してから合わせる（読み込み直後は地図の大きさがまだ0のことがある）
+function fitStart() {
+  map.invalidateSize();
+  map.fitBounds(L.latLngBounds(startArea.map(f => [f.lat, f.lng])), {
+    animate: false,
+    paddingTopLeft: [24, 80],
+    paddingBottomRight: [24, 110],
+  });
+}
+if (document.readyState === "complete") fitStart();
+else window.addEventListener("load", fitStart);
 </script>
 </body>
 </html>
