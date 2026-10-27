@@ -11,6 +11,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.38266,
   "lng": 132.443451,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -40,6 +42,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.389244,
   "lng": 132.451324,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    3,
    1,
@@ -69,6 +73,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.395996,
   "lng": 132.462341,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -98,6 +104,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.385899,
   "lng": 132.467224,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    2,
    0,
@@ -127,6 +135,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.404442,
   "lng": 132.450943,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -156,6 +166,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.410252,
   "lng": 132.461746,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -185,6 +197,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.368389,
   "lng": 132.444092,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -214,6 +228,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.390976,
   "lng": 132.468033,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -243,6 +259,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.390282,
   "lng": 132.447479,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -272,6 +290,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.386608,
   "lng": 132.441467,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -301,6 +321,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.40778,
   "lng": 132.464645,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -330,6 +352,8 @@ window.FACILITIES = [
   "extended": "18:30~20:30",
   "lat": 34.37616,
   "lng": 132.459259,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -359,6 +383,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.366943,
   "lng": 132.434326,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -388,6 +414,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.398327,
   "lng": 132.463333,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -417,6 +445,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.403145,
   "lng": 132.456985,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    13,
@@ -446,6 +476,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.384766,
   "lng": 132.466324,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -475,6 +507,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.371067,
   "lng": 132.445877,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -504,6 +538,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.394928,
   "lng": 132.449951,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -533,6 +569,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.385395,
   "lng": 132.445068,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -562,6 +600,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.3755,
   "lng": 132.438049,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -591,6 +631,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.365868,
   "lng": 132.437607,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    2,
@@ -620,6 +662,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.370541,
   "lng": 132.438995,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -649,6 +693,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.397625,
   "lng": 132.469284,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -678,6 +724,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.367161,
   "lng": 132.430267,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -707,6 +755,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.367279,
   "lng": 132.451324,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -736,6 +786,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.399559,
   "lng": 132.450745,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -765,6 +817,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.368389,
   "lng": 132.444092,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -794,6 +848,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.403793,
   "lng": 132.449814,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    5,
    13,
@@ -823,6 +879,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.387665,
   "lng": 132.453842,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    6,
    0,
@@ -852,6 +910,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.379292,
   "lng": 132.45488,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -881,6 +941,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.390873,
   "lng": 132.449921,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -910,6 +972,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.380348,
   "lng": 132.459946,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -939,6 +1003,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.384167,
   "lng": 132.464005,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -968,6 +1034,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.396095,
   "lng": 132.460709,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -997,6 +1065,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.382927,
   "lng": 132.443939,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    2,
@@ -1026,6 +1096,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.379711,
   "lng": 132.441116,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -1055,6 +1127,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.383198,
   "lng": 132.461624,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -1084,6 +1158,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.398937,
   "lng": 132.44696,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1113,6 +1189,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.39077,
   "lng": 132.458588,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    2,
@@ -1142,6 +1220,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.382664,
   "lng": 132.442245,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -1171,6 +1251,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.385216,
   "lng": 132.460495,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    3,
    0,
@@ -1200,6 +1282,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.39584,
   "lng": 132.489487,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1229,6 +1313,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.423798,
   "lng": 132.496338,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -1258,6 +1344,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.412407,
   "lng": 132.497437,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1287,6 +1375,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.437222,
   "lng": 132.487152,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1316,6 +1406,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.40007,
   "lng": 132.482422,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1345,6 +1437,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.446014,
   "lng": 132.53685,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1374,6 +1468,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.412773,
   "lng": 132.505264,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1403,6 +1499,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.429016,
   "lng": 132.485214,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    8,
@@ -1432,6 +1530,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.41412,
   "lng": 132.513,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1461,6 +1561,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.399796,
   "lng": 132.490005,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    1,
@@ -1490,6 +1592,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.41692,
   "lng": 132.494812,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1519,6 +1623,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.413383,
   "lng": 132.509079,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1548,6 +1654,8 @@ window.FACILITIES = [
   "extended": "18:00~20:00",
   "lat": 34.414001,
   "lng": 132.468567,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1577,6 +1685,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.403732,
   "lng": 132.470154,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1606,6 +1716,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.423756,
   "lng": 132.468216,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    2,
@@ -1635,6 +1747,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.407166,
   "lng": 132.494934,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1664,6 +1778,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.428425,
   "lng": 132.487747,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1693,6 +1809,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.438354,
   "lng": 132.532333,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1722,6 +1840,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.438038,
   "lng": 132.484451,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1751,6 +1871,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.414001,
   "lng": 132.468567,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1780,6 +1902,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.402416,
   "lng": 132.476028,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1809,6 +1933,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.400356,
   "lng": 132.47554,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1838,6 +1964,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.414394,
   "lng": 132.466232,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1867,6 +1995,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.391193,
   "lng": 132.481934,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -1896,6 +2026,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.388908,
   "lng": 132.490952,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1925,6 +2057,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.371338,
   "lng": 132.505737,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1954,6 +2088,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.379341,
   "lng": 132.468384,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -1983,6 +2119,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.371044,
   "lng": 132.477753,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2012,6 +2150,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.37714,
   "lng": 132.491562,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2041,6 +2181,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.373489,
   "lng": 132.495377,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2070,6 +2212,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.363605,
   "lng": 132.485229,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    3,
@@ -2099,6 +2243,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.362965,
   "lng": 132.465485,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2128,6 +2274,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.348133,
   "lng": 132.462402,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2157,6 +2305,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.356468,
   "lng": 132.452194,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    2,
    0,
@@ -2186,6 +2336,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.311302,
   "lng": 132.436905,
+  "approx": true,
+  "over3": null,
   "vacancy": [
    null,
    2,
@@ -2215,6 +2367,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.360268,
   "lng": 132.462921,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2244,6 +2398,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.371548,
   "lng": 132.46344,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2273,6 +2429,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.381798,
   "lng": 132.487305,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2302,6 +2460,8 @@ window.FACILITIES = [
   "extended": "18:15~20:15",
   "lat": 34.381195,
   "lng": 132.485825,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    3,
@@ -2331,6 +2491,8 @@ window.FACILITIES = [
   "extended": "18:15~20:15",
   "lat": 34.385567,
   "lng": 132.475006,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2360,6 +2522,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.364159,
   "lng": 132.472366,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2389,6 +2553,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.370934,
   "lng": 132.462723,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2418,6 +2584,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.354622,
   "lng": 132.46814,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2447,6 +2615,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.376358,
   "lng": 132.490067,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -2476,6 +2646,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.386547,
   "lng": 132.481216,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -2505,6 +2677,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.385662,
   "lng": 132.483887,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -2534,6 +2708,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.394783,
   "lng": 132.47229,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -2563,6 +2739,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.394318,
   "lng": 132.471466,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2592,6 +2770,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.358589,
   "lng": 132.465012,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2621,6 +2801,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.359707,
   "lng": 132.457901,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2650,6 +2832,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.385757,
   "lng": 132.477036,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2679,6 +2863,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.372128,
   "lng": 132.510391,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2708,6 +2894,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.37352,
   "lng": 132.512421,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2737,6 +2925,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.382191,
   "lng": 132.46994,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2766,6 +2956,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.385567,
   "lng": 132.470901,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -2795,6 +2987,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.38726,
   "lng": 132.481689,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -2824,6 +3018,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.385567,
   "lng": 132.475006,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2853,6 +3049,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.374184,
   "lng": 132.469254,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2882,6 +3080,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.374691,
   "lng": 132.507584,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2911,6 +3111,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.373417,
   "lng": 132.494446,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2940,6 +3142,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.388042,
   "lng": 132.47728,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2969,6 +3173,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.366096,
   "lng": 132.464615,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -2998,6 +3204,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.373466,
   "lng": 132.383423,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3027,6 +3235,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.402054,
   "lng": 132.438126,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    4,
@@ -3056,6 +3266,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.380627,
   "lng": 132.404037,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    4,
@@ -3085,6 +3297,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.400539,
   "lng": 132.423401,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3114,6 +3328,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.38311,
   "lng": 132.418015,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3143,6 +3359,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.396099,
   "lng": 132.434082,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3172,6 +3390,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.391388,
   "lng": 132.415268,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3201,6 +3421,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.412968,
   "lng": 132.456497,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3230,6 +3452,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.376503,
   "lng": 132.402863,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    2,
@@ -3259,6 +3483,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.408051,
   "lng": 132.447479,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -3288,6 +3514,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.398285,
   "lng": 132.43721,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -3317,6 +3545,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.402763,
   "lng": 132.424225,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3346,6 +3576,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.405106,
   "lng": 132.446411,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3375,6 +3607,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.403763,
   "lng": 132.445374,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -3404,6 +3638,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.39706,
   "lng": 132.440186,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -3433,6 +3669,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.386002,
   "lng": 132.43248,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3462,6 +3700,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.382484,
   "lng": 132.430359,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3491,6 +3731,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.391529,
   "lng": 132.440506,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -3513,13 +3755,15 @@ window.FACILITIES = [
   "name": "庚午南保育園",
   "ward": "西区",
   "type": "保育園",
-  "address": "広島市西区庚午南ニ丁目33-27",
+  "address": "広島市西区庚午南二丁目33-27",
   "tel": "082-527-2600",
   "capacity": "90",
   "hours": "7:15~18:15",
   "extended": "18:15~19:15",
-  "lat": 34.378929,
-  "lng": 132.413773,
+  "lat": 34.377472,
+  "lng": 132.409302,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    8,
@@ -3549,6 +3793,8 @@ window.FACILITIES = [
   "extended": "18:15~20:15",
   "lat": 34.379562,
   "lng": 132.413193,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -3578,6 +3824,8 @@ window.FACILITIES = [
   "extended": "18:15~20:15",
   "lat": 34.390347,
   "lng": 132.420135,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3607,6 +3855,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.366989,
   "lng": 132.401382,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    4,
    5,
@@ -3636,6 +3886,8 @@ window.FACILITIES = [
   "extended": "18:15~20:15",
   "lat": 34.373718,
   "lng": 132.392456,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3665,6 +3917,8 @@ window.FACILITIES = [
   "extended": "18:30~20:30",
   "lat": 34.384109,
   "lng": 132.406021,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3694,6 +3948,8 @@ window.FACILITIES = [
   "extended": "18:30~20:30",
   "lat": 34.389114,
   "lng": 132.422134,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3723,6 +3979,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.371788,
   "lng": 132.386185,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3752,6 +4010,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.388638,
   "lng": 132.439011,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3781,6 +4041,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.400169,
   "lng": 132.442032,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3810,6 +4072,8 @@ window.FACILITIES = [
   "extended": "18:30~18:45",
   "lat": 34.379417,
   "lng": 132.428909,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -3839,6 +4103,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.378036,
   "lng": 132.427155,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3868,6 +4134,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.389088,
   "lng": 132.433838,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -3897,6 +4165,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.42086,
   "lng": 132.4617,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3926,6 +4196,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.411495,
   "lng": 132.449326,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -3955,6 +4227,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.372749,
   "lng": 132.376282,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -3984,6 +4258,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.366615,
   "lng": 132.380524,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -4013,6 +4289,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.372082,
   "lng": 132.392303,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4042,6 +4320,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.378143,
   "lng": 132.37883,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4071,6 +4351,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.403316,
   "lng": 132.432159,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -4100,6 +4382,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.392467,
   "lng": 132.431686,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4129,6 +4413,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.420181,
   "lng": 132.460938,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    8,
@@ -4158,6 +4444,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.418636,
   "lng": 132.426239,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4187,6 +4475,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.401844,
   "lng": 132.390411,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -4216,6 +4506,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.422623,
   "lng": 132.450531,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4245,6 +4537,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.392467,
   "lng": 132.431686,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4274,6 +4568,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.365704,
   "lng": 132.378143,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4303,6 +4599,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.399712,
   "lng": 132.425705,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    1,
@@ -4332,6 +4630,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.379932,
   "lng": 132.394089,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -4361,6 +4661,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.379528,
   "lng": 132.407242,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4390,6 +4692,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.376194,
   "lng": 132.399887,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    2,
    1,
@@ -4419,6 +4723,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.408855,
   "lng": 132.455124,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -4448,6 +4754,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.391838,
   "lng": 132.424515,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4477,6 +4785,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.401356,
   "lng": 132.441238,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -4506,6 +4816,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.374275,
   "lng": 132.39917,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    4,
    2,
@@ -4535,6 +4847,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.381142,
   "lng": 132.409271,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -4564,6 +4878,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.385811,
   "lng": 132.414963,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4593,6 +4909,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.376793,
   "lng": 132.4254,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4622,6 +4940,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.389088,
   "lng": 132.41626,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4651,6 +4971,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.395432,
   "lng": 132.435852,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    1,
@@ -4680,6 +5002,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.371292,
   "lng": 132.396591,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4709,6 +5033,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.395229,
   "lng": 132.435486,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    1,
@@ -4738,6 +5064,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.373718,
   "lng": 132.392624,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -4767,6 +5095,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.409584,
   "lng": 132.447067,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -4796,6 +5126,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.43816,
   "lng": 132.449921,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4825,6 +5157,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.438988,
   "lng": 132.451538,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4854,6 +5188,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.437893,
   "lng": 132.453583,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4883,6 +5219,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.439999,
   "lng": 132.446304,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4912,6 +5250,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.443138,
   "lng": 132.432495,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4941,6 +5281,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.428291,
   "lng": 132.454437,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4970,6 +5312,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.428181,
   "lng": 132.453934,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -4999,6 +5343,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.434036,
   "lng": 132.45372,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5028,6 +5374,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.430649,
   "lng": 132.456253,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -5057,6 +5405,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.435978,
   "lng": 132.473083,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5086,6 +5436,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.43372,
   "lng": 132.461838,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5115,6 +5467,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.434181,
   "lng": 132.464584,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5144,6 +5498,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.434574,
   "lng": 132.470917,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -5173,6 +5529,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.440361,
   "lng": 132.472458,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5202,6 +5560,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.441711,
   "lng": 132.471436,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5231,6 +5591,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.443195,
   "lng": 132.478012,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -5260,6 +5622,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.442356,
   "lng": 132.474899,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5289,6 +5653,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.441971,
   "lng": 132.477844,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -5318,6 +5684,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.442627,
   "lng": 132.469223,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5347,6 +5715,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.446056,
   "lng": 132.481094,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5376,6 +5746,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.443394,
   "lng": 132.467438,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5405,6 +5777,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.444443,
   "lng": 132.468002,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5434,6 +5808,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.440449,
   "lng": 132.455032,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5463,6 +5839,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.441334,
   "lng": 132.456604,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5492,6 +5870,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.447495,
   "lng": 132.465591,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5521,6 +5901,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.446743,
   "lng": 132.46347,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5550,6 +5932,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.448765,
   "lng": 132.461731,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5579,6 +5963,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.449554,
   "lng": 132.463074,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5608,6 +5994,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.436203,
   "lng": 132.460556,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5637,6 +6025,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.43726,
   "lng": 132.463043,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5666,6 +6056,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.454174,
   "lng": 132.471436,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5695,6 +6087,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.456791,
   "lng": 132.472931,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5724,6 +6118,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.452648,
   "lng": 132.471054,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -5753,6 +6149,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.453388,
   "lng": 132.470261,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5782,6 +6180,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.460785,
   "lng": 132.466949,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5811,6 +6211,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.46204,
   "lng": 132.466034,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5840,6 +6242,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.464924,
   "lng": 132.466934,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5869,6 +6273,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.456642,
   "lng": 132.462784,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5898,6 +6304,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.45063,
   "lng": 132.477402,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5927,6 +6335,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.451588,
   "lng": 132.481003,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -5956,6 +6366,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.453934,
   "lng": 132.485596,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -5985,6 +6397,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.452801,
   "lng": 132.484543,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6014,6 +6428,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.472599,
   "lng": 132.455917,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -6043,6 +6459,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.475468,
   "lng": 132.444702,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6072,6 +6490,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.484631,
   "lng": 132.45018,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6101,6 +6521,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.483097,
   "lng": 132.444809,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -6130,6 +6552,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.471691,
   "lng": 132.445724,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6159,6 +6583,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.470554,
   "lng": 132.448776,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6188,6 +6614,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.466808,
   "lng": 132.43277,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -6217,6 +6645,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.477127,
   "lng": 132.463943,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6246,6 +6676,8 @@ window.FACILITIES = [
   "extended": "18:15~19:30",
   "lat": 34.462856,
   "lng": 132.483505,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6275,6 +6707,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.46022,
   "lng": 132.485184,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6304,6 +6738,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.469456,
   "lng": 132.485153,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6333,6 +6769,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.46907,
   "lng": 132.488525,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6362,6 +6800,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.472393,
   "lng": 132.486893,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6391,6 +6831,8 @@ window.FACILITIES = [
   "extended": "18:15~20:15",
   "lat": 34.461826,
   "lng": 132.475067,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6420,6 +6862,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.462132,
   "lng": 132.47522,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -6449,6 +6893,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.461174,
   "lng": 132.477325,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6478,6 +6924,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.471729,
   "lng": 132.475601,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6507,6 +6955,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.479485,
   "lng": 132.485474,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6536,6 +6986,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.477554,
   "lng": 132.496048,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6565,6 +7017,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.477589,
   "lng": 132.4888,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6594,6 +7048,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.469765,
   "lng": 132.473557,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -6623,6 +7079,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.495541,
   "lng": 132.363525,
+  "approx": true,
+  "over3": null,
   "vacancy": [
    1,
    5,
@@ -6652,6 +7110,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.465546,
   "lng": 132.414551,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6681,6 +7141,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.46851,
   "lng": 132.418701,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6710,6 +7172,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.462868,
   "lng": 132.410446,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6739,6 +7203,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.461544,
   "lng": 132.412476,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6768,6 +7234,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.458752,
   "lng": 132.411713,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6797,6 +7265,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.456844,
   "lng": 132.405426,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6826,6 +7296,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.446796,
   "lng": 132.387421,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6855,6 +7327,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.446964,
   "lng": 132.380371,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6884,6 +7358,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.443836,
   "lng": 132.401749,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -6913,6 +7389,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.553261,
   "lng": 132.670547,
+  "approx": true,
+  "over3": null,
   "vacancy": [
    2,
    2,
@@ -6942,6 +7420,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.514843,
   "lng": 132.608963,
+  "approx": true,
+  "over3": null,
   "vacancy": [
    null,
    1,
@@ -6971,6 +7451,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.482471,
   "lng": 132.578598,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    1,
@@ -7000,6 +7482,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.468929,
   "lng": 132.540314,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    1,
@@ -7029,6 +7513,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.471203,
   "lng": 132.502792,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7051,13 +7537,20 @@ window.FACILITIES = [
   "name": "はすがおか認定こども園",
   "ward": "安佐北区",
   "type": "認定こども園",
-  "address": "広島市安佐北区・3歳未満クラス口田南七丁目12ー35・3歳以上クラス口田二丁目1-2",
+  "address": "広島市安佐北区口田南七丁目12-35",
   "tel": "082-843-6388",
   "capacity": "122",
   "hours": "7:15~18:15",
   "extended": "18:15~19:15",
-  "lat": 34.518333,
-  "lng": 132.507782,
+  "lat": 34.461182,
+  "lng": 132.497894,
+  "approx": false,
+  "over3": {
+   "address": "広島市安佐北区口田二丁目1-2",
+   "lat": 34.469364,
+   "lng": 132.501373,
+   "approx": false
+  },
   "vacancy": [
    0,
    0,
@@ -7087,6 +7580,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.469559,
   "lng": 132.559723,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -7116,6 +7611,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.482952,
   "lng": 132.531021,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7145,6 +7642,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.48674,
   "lng": 132.524475,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7174,6 +7673,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.484871,
   "lng": 132.515015,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7203,6 +7704,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.47718,
   "lng": 132.51329,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7232,6 +7735,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.475601,
   "lng": 132.509979,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7261,6 +7766,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.462879,
   "lng": 132.507858,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7290,6 +7797,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.45575,
   "lng": 132.497299,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -7319,6 +7828,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.522827,
   "lng": 132.490967,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7348,6 +7859,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.533512,
   "lng": 132.483643,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7377,6 +7890,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.517708,
   "lng": 132.499603,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7406,6 +7921,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.505917,
   "lng": 132.51564,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7435,6 +7952,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.519699,
   "lng": 132.514023,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7464,6 +7983,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.518993,
   "lng": 132.508545,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7493,6 +8014,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.519554,
   "lng": 132.507523,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7522,6 +8045,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.516228,
   "lng": 132.502731,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7551,6 +8076,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.525875,
   "lng": 132.507355,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7580,6 +8107,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.538879,
   "lng": 132.526611,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7609,6 +8138,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.553631,
   "lng": 132.545227,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7638,6 +8169,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.52483,
   "lng": 132.4953,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7667,6 +8200,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.527588,
   "lng": 132.485092,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7696,6 +8231,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.523582,
   "lng": 132.499405,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7725,6 +8262,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.556526,
   "lng": 132.44046,
+  "approx": true,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -7754,6 +8293,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.592159,
   "lng": 132.468567,
+  "approx": true,
+  "over3": null,
   "vacancy": [
    3,
    1,
@@ -7783,6 +8324,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.522072,
   "lng": 132.384079,
+  "approx": true,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -7812,6 +8355,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.506359,
   "lng": 132.439117,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7841,6 +8386,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.505909,
   "lng": 132.435654,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7870,6 +8417,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.425289,
   "lng": 132.620102,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7899,6 +8448,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.422607,
   "lng": 132.597809,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7928,6 +8479,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.426758,
   "lng": 132.591232,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7957,6 +8510,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.406925,
   "lng": 132.583069,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -7986,6 +8541,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.33934,
   "lng": 132.532425,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8015,6 +8572,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.378853,
   "lng": 132.520477,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -8044,6 +8603,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.339306,
   "lng": 132.536362,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8073,6 +8634,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.3895,
   "lng": 132.564896,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8102,6 +8665,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.388046,
   "lng": 132.571381,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8131,6 +8696,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.422409,
   "lng": 132.593842,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8160,6 +8727,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.421688,
   "lng": 132.598373,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8189,6 +8758,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.352303,
   "lng": 132.531754,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8218,6 +8789,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.393219,
   "lng": 132.56488,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8247,6 +8820,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.391472,
   "lng": 132.562973,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8276,6 +8851,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.40316,
   "lng": 132.579193,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8305,6 +8882,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.398014,
   "lng": 132.548615,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8334,6 +8913,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.375797,
   "lng": 132.517609,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8363,6 +8944,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.369476,
   "lng": 132.523285,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8392,6 +8975,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.35223,
   "lng": 132.537338,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -8421,6 +9006,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.346085,
   "lng": 132.540329,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    6,
@@ -8450,6 +9037,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.350372,
   "lng": 132.530899,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8479,6 +9068,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.383419,
   "lng": 132.621185,
+  "approx": true,
+  "over3": null,
   "vacancy": [
    2,
    0,
@@ -8508,6 +9099,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.497746,
   "lng": 132.288788,
+  "approx": true,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8537,6 +9130,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.429409,
   "lng": 132.26564,
+  "approx": true,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8566,6 +9161,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.417904,
   "lng": 132.385345,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8595,6 +9192,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.414093,
   "lng": 132.353134,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8624,6 +9223,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.427917,
   "lng": 132.401505,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8653,6 +9254,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.395432,
   "lng": 132.36409,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8682,6 +9285,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.392021,
   "lng": 132.361221,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8711,6 +9316,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.380276,
   "lng": 132.352768,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8740,6 +9347,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.37365,
   "lng": 132.351227,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8769,6 +9378,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.367424,
   "lng": 132.347382,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8798,6 +9409,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.370598,
   "lng": 132.356369,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8827,6 +9440,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.383831,
   "lng": 132.356918,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8856,6 +9471,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.3694,
   "lng": 132.369232,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8885,6 +9502,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.360619,
   "lng": 132.357285,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8914,6 +9533,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.360012,
   "lng": 132.347107,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    0,
@@ -8943,6 +9564,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.363636,
   "lng": 132.35025,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -8972,6 +9595,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.367325,
   "lng": 132.373093,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9001,6 +9626,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.383049,
   "lng": 132.353851,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -9030,6 +9657,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.36364,
   "lng": 132.371277,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -9059,6 +9688,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.37426,
   "lng": 132.348221,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9088,6 +9719,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.37001,
   "lng": 132.365906,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -9117,6 +9750,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.366489,
   "lng": 132.362488,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9146,6 +9781,8 @@ window.FACILITIES = [
   "extended": "18:30~19:30",
   "lat": 34.382923,
   "lng": 132.36084,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9175,6 +9812,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.364868,
   "lng": 132.359451,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9204,6 +9843,8 @@ window.FACILITIES = [
   "extended": "",
   "lat": 34.364765,
   "lng": 132.358597,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    null,
    null,
@@ -9233,6 +9874,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.395737,
   "lng": 132.388123,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    6,
@@ -9262,6 +9905,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.393257,
   "lng": 132.348221,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9284,13 +9929,20 @@ window.FACILITIES = [
   "name": "五月が丘認定こども園",
   "ward": "佐伯区",
   "type": "認定こども園",
-  "address": "広島市佐伯区・3歳未満クラス五月が丘三丁目19-14・3歳以上クラス五月が丘三丁目25-10",
+  "address": "広島市佐伯区五月が丘三丁目19-14",
   "tel": "082-・3歳未満クラス941-0701・3歳以上クラス941-2960",
   "capacity": "100",
   "hours": "7:30~18:30",
   "extended": "―",
-  "lat": 34.364445,
-  "lng": 132.36084,
+  "lat": 34.423187,
+  "lng": 132.404266,
+  "approx": false,
+  "over3": {
+   "address": "広島市佐伯区五月が丘三丁目25-10",
+   "lat": 34.423477,
+   "lng": 132.405212,
+   "approx": false
+  },
   "vacancy": [
    1,
    0,
@@ -9320,6 +9972,8 @@ window.FACILITIES = [
   "extended": "18:30~19:00",
   "lat": 34.367561,
   "lng": 132.362335,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9349,6 +10003,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.369083,
   "lng": 132.354507,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    3,
    0,
@@ -9378,6 +10034,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.390331,
   "lng": 132.36322,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    3,
    0,
@@ -9407,6 +10065,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.408512,
   "lng": 132.375839,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -9436,6 +10096,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.371052,
   "lng": 132.366837,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    0,
@@ -9465,6 +10127,8 @@ window.FACILITIES = [
   "extended": "18:00~19:00",
   "lat": 34.398834,
   "lng": 132.359604,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9494,6 +10158,8 @@ window.FACILITIES = [
   "extended": "18:15~19:15",
   "lat": 34.437492,
   "lng": 132.381729,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9523,6 +10189,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.374496,
   "lng": 132.358673,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9552,6 +10220,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.401073,
   "lng": 132.368225,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -9581,6 +10251,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.364002,
   "lng": 132.352661,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9610,6 +10282,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.377571,
   "lng": 132.352402,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    1,
    1,
@@ -9639,6 +10313,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.385544,
   "lng": 132.360992,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -9668,6 +10344,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.385262,
   "lng": 132.356033,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    0,
@@ -9697,6 +10375,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.36908,
   "lng": 132.350006,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -9726,6 +10406,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.438122,
   "lng": 132.382141,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    0,
    1,
@@ -9755,6 +10437,8 @@ window.FACILITIES = [
   "extended": "―",
   "lat": 34.365231,
   "lng": 132.370377,
+  "approx": false,
+  "over3": null,
   "vacancy": [
    3,
    0,

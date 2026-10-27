@@ -84,6 +84,17 @@ def cell(s):
     return unicodedata.normalize("NFKC", s or "").replace("\n", "").strip()
 
 
+def clean_address(s):
+    """一覧PDFの住所の誤記・表記ゆれを直す。"""
+    s = re.sub(r"ニ(?=丁目)", "二", s)  # 「庚午南ニ丁目」のようにカタカナの「ニ」になっている
+    return re.sub(r"(?<=\d)[ー－―‐](?=\d)", "-", s)  # 「12ー35」のように長音記号が番地の区切りになっている
+
+
+# 「・3歳未満クラス口田南七丁目12-35・3歳以上クラス口田二丁目1-2」のように、
+# 年齢によって保育する場所が違う施設の住所
+SPLIT_SITES = re.compile(r"・?3歳未満クラス(?P<under>.+?)・3歳以上クラス(?P<over>.+)")
+
+
 def load_facility_list(pdf_path, ward):
     """一覧PDFから指定区のページの施設行を {照合キー: 情報} で返す。"""
     facilities = {}
@@ -114,9 +125,13 @@ def load_facility_list(pdf_path, ward):
                 name = re.sub(r"^○", "", cell(r[col["施設名"]]))
                 if not name:
                     continue
+                addr = clean_address(cell(r[col["所在地"]]))
+                split = SPLIT_SITES.fullmatch(addr)
                 facilities[key(name)] = {
                     "一覧名称": name,
-                    "住所": f"広島市{ward}{cell(r[col['所在地']])}",
+                    # 場所が2か所ある施設は、0〜2歳の場所を主な住所にし、3〜5歳の場所を別に持つ
+                    "住所": f"広島市{ward}{split['under'] if split else addr}",
+                    "3歳以上の住所": f"広島市{ward}{split['over']}" if split else None,
                     "電話": "082-" + cell(r[col["Tel"]]) if cell(r[col["Tel"]]) else "",
                     "定員": cell(r[col["合計"]]),
                     "開所時間": cell(r[col["標準時間"]]),
@@ -138,6 +153,11 @@ def geocode(address, cache):
     lng, lat = hits[0]["geometry"]["coordinates"]
     cache[address] = {"lat": lat, "lng": lng, "検索結果": hits[0]["properties"]["title"]}
     return cache[address]
+
+
+def is_approx(geo):
+    """住所検索が番地まで届かず、町や大字の代表点を返したか（農村部の「大字」の住所に多い）。"""
+    return not re.search(r"[0-9０-９]+(番|号|番地)?$", geo["検索結果"])
 
 
 def main():
@@ -165,6 +185,7 @@ def main():
                 continue
             try:
                 geo = geocode(info["住所"], cache)
+                over = geocode(info["3歳以上の住所"], cache) if info["3歳以上の住所"] else None
             except OSError as e:  # 通信失敗はキャッシュに残さず、あとで再実行できるようにする
                 print(f"通信に失敗: {v['施設名']} {info['住所']} ({e})")
                 problems.append((ward, v["施設名"], "通信失敗"))
@@ -185,6 +206,14 @@ def main():
                 "extended": info["延長保育"],
                 "lat": geo["lat"],
                 "lng": geo["lng"],
+                "approx": is_approx(geo),
+                # 3〜5歳の保育場所が別にある施設（3歳以上を選ぶとピンがこちらに移る）
+                "over3": {
+                    "address": info["3歳以上の住所"],
+                    "lat": over["lat"],
+                    "lng": over["lng"],
+                    "approx": is_approx(over),
+                } if over else None,
                 "vacancy": [None if v[f"{a}歳空き"] == "" else int(v[f"{a}歳空き"]) for a in range(6)],
                 "waiting": [None if v[f"{a}歳待機"] == "" else int(v[f"{a}歳待機"]) for a in range(6)],
                 "note": v["備考"],

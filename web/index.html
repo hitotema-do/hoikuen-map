@@ -178,6 +178,11 @@ function color(n) {
   return "var(--none)";
 }
 
+// 年齢によって保育する場所が違う施設は、選んでいる年齢の場所にピンを立てる
+function site(f) {
+  return f.over3 && age >= 3 ? f.over3 : f;
+}
+
 function popupHtml(f) {
   const head = AGES.map(a => `<th class="${a === age ? "sel" : ""}">${a}歳</th>`).join("");
   const row = (arr) => AGES.map(a => {
@@ -193,12 +198,15 @@ function popupHtml(f) {
       <tr><th>待機</th>${row(f.waiting)}</tr>
     </table>
     <div class="info">
-      📍 ${f.address}<br>
+      ${f.over3
+        ? `📍 0〜2歳：${f.address}<br>📍 3〜5歳：${f.over3.address}<br>`
+        : `📍 ${f.address}<br>`}
       📞 <a href="tel:${f.tel}">${f.tel}</a><br>
       🕖 ${f.hours}${f.extended ? `（延長 ${f.extended}）` : ""}<br>
       👶 定員 ${f.capacity}人
     </div>
     ${f.note ? `<div class="note">※${f.note}</div>` : ""}
+    ${site(f).approx ? `<div class="note">※地図上の位置はおおよそです（住所の番地まで特定できないため）</div>` : ""}
   </div>`;
 }
 
@@ -224,8 +232,9 @@ function render() {
         });
     // 空きのある園を常に手前に。空きが多いほど上に重ねる
     const z = open ? 1000 + n * 10 : n === null ? -1000 : 0;
-    L.marker([f.lat, f.lng], { icon, title: f.name, zIndexOffset: z })
-      .bindPopup(popupHtml(f), { maxWidth: 320 })
+    L.marker([site(f).lat, site(f).lng], { icon, title: f.name, zIndexOffset: z })
+      // 開いた詳細が右上のボタンに隠れないよう、上側に余白を取って地図を動かす
+      .bindPopup(popupHtml(f), { maxWidth: 320, autoPanPaddingTopLeft: [16, 96] })
       .addTo(layer);
   }
 }
