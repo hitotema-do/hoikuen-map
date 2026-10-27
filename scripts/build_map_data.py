@@ -160,10 +160,11 @@ def is_approx(geo):
     return not re.search(r"[0-9０-９]+(番|号|番地)?$", geo["検索結果"])
 
 
-def main():
-    vacancy_csv, list_pdf, ward_arg, limit_arg, out_js = sys.argv[1:6]
-    wards = list(WARDS.values()) if ward_arg == "全区" else [ward_arg]
-    limit = None if limit_arg == "全件" else int(limit_arg)
+def build(vacancy_csv, list_pdf, wards, limit, out_js, data_info=None):
+    """地図用データを作って out_js に書き出し、(載せた施設, 載せられなかった施設) を返す。
+
+    data_info は地図の見出しに出す「いつ時点・何月入所分か」（例 {"asOf": "10月1日", "entry": "11月"}）。
+    """
     all_rows = list(csv.DictReader(open(vacancy_csv, encoding="utf-8-sig")))
     cache = json.loads(CACHE.read_text(encoding="utf-8")) if CACHE.exists() else {}
 
@@ -223,6 +224,7 @@ def main():
     Path(out_js).parent.mkdir(parents=True, exist_ok=True)
     Path(out_js).write_text(
         "// scripts/build_map_data.py で生成。手で編集しない\n"
+        f"window.DATA_INFO = {json.dumps(data_info or {}, ensure_ascii=False)};\n"
         f"window.FACILITIES = {json.dumps(out, ensure_ascii=False, indent=1)};\n",
         encoding="utf-8",
     )
@@ -231,6 +233,14 @@ def main():
         print(f"地図に載せられなかった施設: {len(problems)}件")
         for ward, name, reason in problems:
             print(f"  {ward} {name}: {reason}")
+    return out, problems
+
+
+def main():
+    vacancy_csv, list_pdf, ward_arg, limit_arg, out_js = sys.argv[1:6]
+    wards = list(WARDS.values()) if ward_arg == "全区" else [ward_arg]
+    limit = None if limit_arg == "全件" else int(limit_arg)
+    build(vacancy_csv, list_pdf, wards, limit, out_js)
 
 
 if __name__ == "__main__":

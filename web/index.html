@@ -123,7 +123,7 @@
 <header>
   <div class="title">
     <h1>広島市 保育園空きマップ</h1>
-    <span class="sub">11月入所分（10/1時点）・試作</span>
+    <span class="sub" id="dataInfo">試作</span>
   </div>
   <div class="controls">
     <div class="ages" role="group" aria-label="年齢"></div>
@@ -260,6 +260,12 @@ openBtn.onclick = () => {
 };
 document.getElementById("locate").onclick = () => map.locate({ setView: true, maxZoom: 15 });
 map.on("locationfound", e => L.circleMarker(e.latlng, { radius: 8, color: "#2563eb", fillOpacity: 0.8 }).addTo(map));
+
+// 見出しの「何月入所分・いつ時点か」は、毎月の更新で data.js に書かれる
+const info = window.DATA_INFO || {};
+if (info.entry) {
+  document.getElementById("dataInfo").textContent = `${info.entry}入所分（${info.asOf}時点）・試作`;
+}
 
 render();
 // 最初の表示範囲。スマホなど狭い画面で市全体を出すと中心部のピンが重なるので、

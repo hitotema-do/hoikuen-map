@@ -220,13 +220,18 @@ def extract_pdf(path):
     return rows
 
 
-def main():
-    src, out = Path(sys.argv[1]), Path(sys.argv[2])
+def extract_folder(src):
+    """フォルダ内の区ごとのPDF（01〜08で始まる名前）をすべて抽出して、全施設の行を返す。"""
     rows = []
-    for pdf in sorted(src.glob("0*.pdf")):
+    for pdf in sorted(Path(src).glob("0*.pdf")):
         got = extract_pdf(pdf)
         print(f"{pdf.name}: {len(got)}施設")
         rows.extend(got)
+    return rows
+
+
+def write_csv(rows, out):
+    out = Path(out)
     fields = ["区", "施設名", "種別", "公立私立", "所在地"]
     fields += [f"{a}歳{k}" for a in AGES for k in ("空き", "待機")] + ["備考"]
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -236,6 +241,10 @@ def main():
         w.writeheader()
         w.writerows(rows)
     print(f"合計 {len(rows)}施設 → {out}")
+
+
+def main():
+    write_csv(extract_folder(sys.argv[1]), sys.argv[2])
 
 
 if __name__ == "__main__":

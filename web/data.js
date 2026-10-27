@@ -1,4 +1,5 @@
 // scripts/build_map_data.py で生成。手で編集しない
+window.DATA_INFO = {"asOf": "10月1日", "entry": "11月"};
 window.FACILITIES = [
  {
   "name": "報恩保育園",

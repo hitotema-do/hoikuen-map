@@ -24,11 +24,23 @@ pip install -r requirements.txt
 
 PDFの読み取りにPyMuPDFを使います。2.0以降は表の見出しの読み方が変わり、抽出スクリプトが止まるため、1.x系を入れてください（`requirements.txt` で指定済み）。
 
-## 作り方
+## 毎月の更新
+
+市のページは毎月1〜5日ごろに更新されます。次の1行で、PDFの取得から地図用データの作成まで行います。
+
+```
+python scripts/update_monthly.py
+```
+
+- 新しい月のPDFが出ていなければ「作成済み」と表示して何もしません。同じ月を作り直すときは `--force`
+- 最後に前の月との比較（施設数、新しく載った・載らなくなった施設、0〜2歳の空きがある施設の数）を表示します
+- 区の施設数が大きく変わった、地図に載せられない施設がある、数として読めない値がある、などの場合は「要確認」を表示し、終了コード2で終わります。ファイルは作られるので、中身を確かめてから反映してください
+
+個別に動かす場合：
 
 ```
 python scripts/extract_vacancy.py data/pdf/2026-10 data/vacancy_2026-10.csv
-python scripts/build_map_data.py data/vacancy_2026-10.csv data/facility_list/ichiran_2026-04-01.pdf 中区 10 web/data.js
+python scripts/build_map_data.py data/vacancy_2026-10.csv data/facility_list/ichiran_2026-04-01.pdf 全区 全件 web/data.js
 ```
 
 ## 出典
