@@ -13,6 +13,7 @@
     --border: #d9e2ec;
     --accent: #2563eb;
     --none: #9aa5b1;
+    --zero: #7b8794;  /* 空きなしの丸。背景の地図より濃くして、園があることに気づけるように */
     --few: #f59e0b;
     --many: #16a34a;
   }
@@ -100,13 +101,24 @@
     display: flex; align-items: center; justify-content: center;
     font-family: system-ui, sans-serif;
   }
-  /* 空きなし・対象年齢外は小さな点にして、空きのある園を目立たせる。
-     点そのものは小さいが、指で押せるよう周りに透明な押せる範囲を取る */
+  /* 空きなしは一回り小さい灰色の丸に「0」、対象年齢外は小さな白抜きの点にして、
+     空きのある園を目立たせつつ、園があることには気づけるようにする。
+     指で押せるよう周りに透明な押せる範囲を取る */
   .dot-hit { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
   .dot { border-radius: 50%; }
-  .dot.zero { width: 12px; height: 12px; background: var(--none); border: 2px solid #fff; opacity: .8; box-shadow: 0 0 2px rgba(0,0,0,.3); }
+  .dot.zero {
+    width: 22px; height: 22px;
+    background: var(--zero);
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .dot.zero::after { content: "0"; color: #fff; font: 800 11px system-ui, sans-serif; }
   .dot.na { width: 9px; height: 9px; border: 2px solid var(--none); background: #fff; opacity: .6; }
-  .legend span.small::before { width: 8px; height: 8px; vertical-align: 0; }
+  .legend span.small::before {
+    content: "0"; width: 12px; height: 12px; background: var(--zero);
+    color: #fff; font: 800 8px/12px system-ui, sans-serif; text-align: center; vertical-align: -2px;
+  }
   .legend span.ring::before { width: 6px; height: 6px; background: #fff; border: 2px solid var(--none); vertical-align: 0; }
 
   .popup h2 { font-size: 15px; margin: 0 0 2px; }
