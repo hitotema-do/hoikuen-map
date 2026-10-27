@@ -338,6 +338,8 @@
       <option value="vacancy">空き状況</option>
       <option value="waiting">待機児童</option>
     </select>
+    <!-- 区で絞り込めることが分かるよう、文字のボタンも置く（検索窓の右の丸いボタンと同じパネルを開く） -->
+    <button class="chip" id="openPanelChip">区・種類 ▾</button>
     <button class="chip" id="onlyOpen" aria-pressed="false">空きありのみ</button>
     <span id="activeFilters" style="display: contents"></span>
   </div>
@@ -743,6 +745,9 @@ function updatePanel() {
   const badge = document.getElementById("filterBadge");
   badge.hidden = !n;
   badge.textContent = n;
+  const chip = document.getElementById("openPanelChip");
+  chip.textContent = n ? `区・種類（${n}） ▾` : "区・種類 ▾";
+  chip.classList.toggle("on", n > 0);
 
   // 選んでいる区・種類は、上のボタンの列にも出す。押すと外れる
   const box = document.getElementById("activeFilters");
@@ -817,6 +822,7 @@ document.getElementById("reset").onclick = () => {
   render();
 };
 document.getElementById("openPanel").onclick = () => { panel.hidden = false; };
+document.getElementById("openPanelChip").onclick = () => { panel.hidden = false; };
 
 // ---- 年齢・表示内容・空きありのみ ----
 const ageSel = document.getElementById("age");
