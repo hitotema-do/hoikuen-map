@@ -865,7 +865,8 @@ function updateLegend() {
   document.getElementById("legendNote").textContent = (mode === "waiting"
     ? "待機＝その園を第1希望にして入園を待っている人数。0人でも希望者がいないとは限りません。"
     : "空きがあっても入園できるとは限らないため、最新の状況は各区の福祉課で確認してください。")
-    + "広島市の公式サービスではありません。出典：広島市「保育園等の空き状況」";
+    + "広島市の公式サービスではありません。出典：広島市「保育園等の空き状況」"
+    + "。利用状況を知るため、Cloudflare Web Analytics でアクセス数を集計しています（個人を特定する情報は集めていません）。";
 }
 
 // ---- 現在地 ----
@@ -919,5 +920,6 @@ function fitStart() {
 if (document.readyState === "complete") fitStart();
 else window.addEventListener("load", fitStart);
 </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f22d670a7aa4439bb544aa2d9893c7b7"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
