@@ -5,6 +5,8 @@ name: Monthly update
 #   終了コード0（問題なし）なら main に上げて地図に反映する。
 #   終了コード2（要確認）や途中で止まったときは反映せず、issue で知らせる。
 # 8日になっても今月の分が出ていなければ issue で知らせる。
+#   ただし2月・3月は、市のページに「空き状況リストの更新はありません」とあれば知らせない
+#   （3月選考・4月1次選考はまとめて受け付けるため、2月1日・3月1日現在のリストは出ない）。
 # 知らせの issue が開いている間は、同じ知らせを重ねて出さない。
 on:
   schedule:
@@ -106,6 +108,17 @@ jobs:
           steps.update.outputs.code == '0' && steps.open.outputs.exists != 'true'
         run: |
           if [ -f "data/vacancy_${{ steps.day.outputs.month }}.csv" ]; then exit 0; fi
+          case "${{ steps.day.outputs.month }}" in
+            *-02|*-03)
+              # 文の途中にタグや改行が入ることがあるので、改行とタグを除いてから探す
+              if curl -fsSL -A "hoikuen-map-update (+https://hitotema-do.github.io/hoikuen-map/)" \
+                  "https://www.city.hiroshima.lg.jp/living/kosodate/1021251/1025847/1023646.html" \
+                  | tr -d '\r\n' | sed 's/<[^>]*>//g' | grep -q "空き状況リストの更新はありません"; then
+                echo "2月・3月は市の空き状況リストの更新がない時期（市のページに記載あり）なので知らせない"
+                exit 0
+              fi
+              ;;
+          esac
           gh issue create --label "$LABEL" \
             --title "【保育園マップ】今月の空き状況がまだ出ていません" \
             --body "@${{ github.repository_owner }} 8日になっても、市のページに今月1日現在の空き状況PDFが見つかりません。市の発表が遅れているか、ページの作りが変わった可能性があります。地図は前の月のままです。
