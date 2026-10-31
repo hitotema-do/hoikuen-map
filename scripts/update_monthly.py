@@ -28,10 +28,12 @@ PAGE_URL = "https://www.city.hiroshima.lg.jp/living/kosodate/1021251/1025847/102
 # 前の月から区の施設数がこれ以上増減したら、表の読み取りがずれていないか確認する
 WARD_CHANGE_LIMIT = 3
 
+HEADERS = {"User-Agent": "hoikuen-map-update (+https://hitotema-do.github.io/hoikuen-map/)"}
+
 
 def read_page():
     """市のページから (いつ時点の年月, 見出し用の情報, {区番号: PDFのURL}) を読む。"""
-    with urllib.request.urlopen(PAGE_URL, timeout=30) as res:
+    with urllib.request.urlopen(urllib.request.Request(PAGE_URL, headers=HEADERS), timeout=30) as res:
         html = res.read().decode("utf-8", errors="replace")
     # 「10</strong><strong>月1日現在…」のように文の途中にタグが入るので、タグを除いてから探す
     text = re.sub(r"<[^>]+>", "", html)
@@ -57,7 +59,7 @@ def download(links, folder):
         if list(folder.glob(f"{code}*.pdf")):
             continue  # この区のPDFは取得済み（ファイル名が違っても取り直さない）
         print(f"ダウンロード: {path.name}")
-        with urllib.request.urlopen(url, timeout=60) as res:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=60) as res:
             data = res.read()
         if not data.startswith(b"%PDF"):
             raise SystemExit(f"{url} がPDFではない")
