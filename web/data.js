@@ -1,5 +1,5 @@
 // scripts/build_map_data.py で生成。手で編集しない
-window.DATA_INFO = {"asOf": "10月1日", "entry": "11月"};
+window.DATA_INFO = {"asOf": "11月1日", "entry": "12月"};
 window.FACILITIES = [
  {
   "name": "報恩保育園",
@@ -23,7 +23,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   2,
+   4,
    0,
    0,
    0,
@@ -46,12 +46,12 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   3,
+   1,
    1,
    8,
    0,
-   1,
-   6
+   2,
+   4
   ],
   "waiting": [
    0,
@@ -77,15 +77,15 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    0,
    2,
-   4,
+   3,
    0,
    1
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    0,
@@ -108,7 +108,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   2,
+   0,
    0,
    0,
    0,
@@ -117,7 +117,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    0,
-   0,
+   1,
    0,
    0,
    0,
@@ -140,7 +140,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
+   1,
    1,
    3,
    0,
@@ -148,7 +148,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    0,
-   1,
+   0,
    0,
    0,
    0,
@@ -178,11 +178,11 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   8,
+   10,
    0,
+   0,
+   2,
    1,
-   3,
-   0,
    0
   ],
   "note": ""
@@ -209,7 +209,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   3,
+   6,
    1,
    0,
    null,
@@ -295,14 +295,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
+   1,
    2,
    1,
    0,
    0
   ],
   "waiting": [
-   2,
+   3,
    0,
    0,
    0,
@@ -333,8 +333,8 @@ window.FACILITIES = [
    2
   ],
   "waiting": [
-   8,
-   2,
+   10,
+   3,
    0,
    0,
    0,
@@ -357,10 +357,10 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
-   0,
    1,
    0,
+   1,
+   1,
    0
   ],
   "waiting": [
@@ -426,8 +426,8 @@ window.FACILITIES = [
    7
   ],
   "waiting": [
-   1,
-   1,
+   2,
+   2,
    0,
    0,
    0,
@@ -450,14 +450,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   13,
+   11,
    9,
    0,
    14,
    16
   ],
   "waiting": [
-   2,
+   1,
    0,
    0,
    0,
@@ -485,10 +485,10 @@ window.FACILITIES = [
    5,
    0,
    3,
-   11
+   10
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    0,
@@ -519,7 +519,7 @@ window.FACILITIES = [
    7
   ],
   "waiting": [
-   15,
+   17,
    3,
    1,
    0,
@@ -545,7 +545,7 @@ window.FACILITIES = [
    0,
    0,
    1,
-   2,
+   3,
    8,
    3
   ],
@@ -575,14 +575,14 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
    0,
-   3,
+   0,
+   2,
    0
   ],
   "waiting": [
    9,
-   0,
+   1,
    0,
    0,
    0,
@@ -606,13 +606,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
+   0,
    0,
    0,
    24
   ],
   "waiting": [
-   9,
+   11,
    2,
    0,
    2,
@@ -645,8 +645,8 @@ window.FACILITIES = [
   "waiting": [
    2,
    0,
-   1,
-   1,
+   0,
+   2,
    0,
    0
   ],
@@ -667,14 +667,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
+   2,
    1,
-   0,
    5,
    9,
    5
   ],
   "waiting": [
-   5,
+   8,
    1,
    0,
    0,
@@ -705,9 +705,9 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   8,
-   8,
-   6,
+   11,
+   7,
+   4,
    1,
    2,
    0
@@ -736,11 +736,11 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   3,
-   3,
    4,
-   0,
+   2,
+   3,
    1,
+   2,
    0
   ],
   "note": ""
@@ -763,11 +763,11 @@ window.FACILITIES = [
    0,
    0,
    0,
-   0,
+   1,
    0
   ],
   "waiting": [
-   3,
+   6,
    7,
    3,
    1,
@@ -794,13 +794,13 @@ window.FACILITIES = [
    0,
    0,
    0,
-   0,
+   1,
    0
   ],
   "waiting": [
-   2,
+   3,
    0,
-   0,
+   1,
    0,
    0,
    0
@@ -852,9 +852,9 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   5,
-   13,
-   9,
+   0,
+   0,
+   0,
    0,
    0,
    0
@@ -883,12 +883,12 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   6,
+   0,
+   0,
+   3,
    0,
    4,
-   0,
-   4,
-   1
+   2
   ],
   "waiting": [
    0,
@@ -922,9 +922,9 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   19,
+   23,
    7,
-   3,
+   2,
    4,
    0,
    0
@@ -946,14 +946,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
+   1,
    0,
    null,
    null,
    null
   ],
   "waiting": [
-   2,
+   3,
    0,
    1,
    null,
@@ -984,8 +984,8 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   3,
-   1,
+   2,
+   0,
    0,
    null,
    null,
@@ -1070,7 +1070,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   2,
+   1,
    0,
    null,
    null,
@@ -1101,8 +1101,8 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
-   2,
+   0,
+   3,
    null,
    null,
    null
@@ -1131,7 +1131,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    0,
    0,
    null,
@@ -1170,7 +1170,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   1,
+   2,
    0,
    0,
    null,
@@ -1201,7 +1201,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    null,
@@ -1225,7 +1225,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   0,
    4,
    null,
    null,
@@ -1255,9 +1255,9 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   3,
    0,
-   2,
+   1,
+   1,
    null,
    null,
    null
@@ -1294,7 +1294,7 @@ window.FACILITIES = [
    4
   ],
   "waiting": [
-   15,
+   17,
    1,
    0,
    0,
@@ -1318,9 +1318,9 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
+   0,
    1,
    1,
-   2,
    7,
    8
   ],
@@ -1351,7 +1351,7 @@ window.FACILITIES = [
    0,
    0,
    4,
-   3,
+   4,
    1,
    8
   ],
@@ -1381,13 +1381,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   5,
+   4,
    1,
    0,
    1
   ],
   "waiting": [
-   16,
+   18,
    0,
    1,
    0,
@@ -1413,12 +1413,12 @@ window.FACILITIES = [
    0,
    0,
    17,
-   6,
+   7,
    0,
    11
   ],
   "waiting": [
-   6,
+   10,
    2,
    0,
    0,
@@ -1446,12 +1446,12 @@ window.FACILITIES = [
    0,
    0,
    1,
-   19
+   21
   ],
   "waiting": [
    7,
-   2,
-   4,
+   1,
+   3,
    4,
    0,
    0
@@ -1477,12 +1477,12 @@ window.FACILITIES = [
    0,
    0,
    4,
-   10
+   9
   ],
   "waiting": [
-   11,
-   9,
-   1,
+   13,
+   10,
+   2,
    0,
    0,
    0
@@ -1536,7 +1536,7 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
+   0,
    0,
    0,
    2
@@ -1565,7 +1565,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    1,
    1,
    0,
@@ -1573,7 +1573,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   1,
+   2,
    0,
    0,
    0,
@@ -1604,7 +1604,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   3,
+   4,
    1,
    2,
    2,
@@ -1660,13 +1660,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   0,
+   1,
    0,
    3,
    3
   ],
   "waiting": [
-   4,
+   9,
    0,
    0,
    3,
@@ -1697,9 +1697,9 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   1,
-   4,
    2,
+   3,
+   3,
    1,
    1,
    2
@@ -1722,7 +1722,7 @@ window.FACILITIES = [
   "vacancy": [
    0,
    2,
-   1,
+   0,
    0,
    0,
    2
@@ -1790,7 +1790,7 @@ window.FACILITIES = [
    2
   ],
   "waiting": [
-   6,
+   7,
    3,
    0,
    0,
@@ -1906,7 +1906,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   0,
+   1,
    0,
    1,
    null,
@@ -2000,7 +2000,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   0,
    0,
    0,
    0,
@@ -2008,7 +2008,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    5,
-   3,
+   2,
    2,
    1,
    0,
@@ -2039,10 +2039,10 @@ window.FACILITIES = [
   ],
   "waiting": [
    4,
-   6,
+   7,
    2,
    0,
-   1,
+   2,
    0
   ],
   "note": ""
@@ -2065,7 +2065,7 @@ window.FACILITIES = [
    0,
    4,
    0,
-   6,
+   7,
    12
   ],
   "waiting": [
@@ -2100,9 +2100,9 @@ window.FACILITIES = [
    21
   ],
   "waiting": [
-   5,
+   7,
    2,
-   0,
+   1,
    2,
    3,
    0
@@ -2124,7 +2124,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
+   1,
    0,
    0,
    0,
@@ -2156,10 +2156,10 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   5,
+   4,
    0,
-   0,
-   3
+   1,
+   2
   ],
   "waiting": [
    3,
@@ -2193,7 +2193,7 @@ window.FACILITIES = [
    8
   ],
   "waiting": [
-   2,
+   3,
    5,
    0,
    0,
@@ -2249,15 +2249,15 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
+   0,
    0,
    0,
    6
   ],
   "waiting": [
-   6,
+   7,
    3,
-   1,
+   0,
    3,
    0,
    0
@@ -2286,7 +2286,7 @@ window.FACILITIES = [
    9
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    0,
@@ -2309,7 +2309,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   2,
+   0,
    0,
    2,
    0,
@@ -2441,7 +2441,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   2,
+   4,
    0,
    0,
    null,
@@ -2465,19 +2465,19 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   3,
+   1,
    0,
    0,
    0,
    0
   ],
   "waiting": [
-   15,
-   6,
+   19,
+   5,
    0,
    4,
    0,
-   1
+   2
   ],
   "note": ""
  },
@@ -2503,8 +2503,8 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   7,
-   6,
+   9,
+   4,
    1,
    2,
    0,
@@ -2534,9 +2534,9 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   9,
+   10,
    4,
-   1,
+   0,
    0,
    2,
    0
@@ -2565,8 +2565,8 @@ window.FACILITIES = [
    1
   ],
   "waiting": [
-   6,
-   4,
+   8,
+   5,
    0,
    0,
    1,
@@ -2596,7 +2596,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   3,
+   4,
    6,
    1,
    2,
@@ -2627,8 +2627,8 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   5,
    6,
+   4,
    1,
    1,
    0,
@@ -2650,16 +2650,16 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   0,
    1,
-   0,
+   1,
+   1,
    null,
    null,
    null
   ],
   "waiting": [
-   10,
-   4,
+   12,
+   3,
    0,
    null,
    null,
@@ -2686,14 +2686,14 @@ window.FACILITIES = [
    null,
    0,
    0,
-   3
+   0
   ],
   "waiting": [
    null,
    null,
    null,
    0,
-   1,
+   0,
    0
   ],
   "note": ""
@@ -2714,8 +2714,8 @@ window.FACILITIES = [
   "vacancy": [
    null,
    null,
-   1,
    0,
+   1,
    1,
    1
   ],
@@ -2743,7 +2743,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   0,
+   1,
    0,
    null,
    null,
@@ -2751,8 +2751,8 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   4,
-   6,
+   5,
+   5,
    null,
    null,
    null,
@@ -2775,15 +2775,15 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
-   2,
+   1,
+   1,
    1,
    4,
    2
   ],
   "waiting": [
-   1,
-   1,
+   0,
+   0,
    0,
    0,
    0,
@@ -2813,9 +2813,9 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   5,
+   6,
    14,
-   4,
+   2,
    4,
    0,
    0
@@ -2844,11 +2844,11 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   1,
+   4,
+   3,
+   4,
    3,
    3,
-   2,
-   2,
    0
   ],
   "note": ""
@@ -2879,7 +2879,7 @@ window.FACILITIES = [
    0,
    0,
    1,
-   2,
+   1,
    0
   ],
   "note": ""
@@ -2906,10 +2906,10 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   4,
-   2,
-   2,
+   6,
    3,
+   2,
+   2,
    4,
    4
   ],
@@ -2937,8 +2937,8 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   11,
-   18,
+   16,
+   17,
    7,
    16,
    11,
@@ -2970,7 +2970,7 @@ window.FACILITIES = [
   "waiting": [
    null,
    0,
-   0,
+   1,
    3,
    3,
    1
@@ -3061,7 +3061,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   2,
+   3,
    2,
    2,
    1,
@@ -3086,7 +3086,7 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
+   2,
    null,
    null,
    null
@@ -3115,8 +3115,8 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   0,
-   0,
+   1,
+   3,
    0,
    null,
    null,
@@ -3146,8 +3146,8 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   0,
-   0,
+   1,
+   2,
    0,
    null,
    null,
@@ -3155,7 +3155,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    0,
-   1,
+   0,
    0,
    null,
    null,
@@ -3179,7 +3179,7 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   0,
+   1,
    null,
    null,
    null
@@ -3210,7 +3210,7 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
+   0,
    0,
    12,
    7
@@ -3218,7 +3218,7 @@ window.FACILITIES = [
   "waiting": [
    4,
    4,
-   2,
+   1,
    2,
    0,
    0
@@ -3240,9 +3240,9 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   4,
    3,
-   5,
+   3,
+   4,
    8,
    4
   ],
@@ -3271,14 +3271,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   4,
+   3,
    7,
    3,
    15,
    19
   ],
   "waiting": [
-   2,
+   3,
    0,
    0,
    0,
@@ -3310,9 +3310,9 @@ window.FACILITIES = [
   ],
   "waiting": [
    6,
-   5,
+   4,
    1,
-   3,
+   2,
    1,
    0
   ],
@@ -3334,15 +3334,15 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
    0,
    0,
-   6
+   0,
+   7
   ],
   "waiting": [
-   10,
-   0,
-   0,
+   12,
+   1,
+   1,
    0,
    1,
    0
@@ -3365,13 +3365,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   2,
+   1,
    1,
    6,
    5
   ],
   "waiting": [
-   5,
+   6,
    0,
    0,
    0,
@@ -3433,7 +3433,7 @@ window.FACILITIES = [
    1
   ],
   "waiting": [
-   41,
+   43,
    10,
    6,
    0,
@@ -3458,13 +3458,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    2,
-   7,
+   8,
    1,
-   9,
+   10,
    16
   ],
   "waiting": [
-   3,
+   4,
    0,
    0,
    0,
@@ -3488,14 +3488,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   0,
    8,
    null,
    null,
    null
   ],
   "waiting": [
-   4,
+   5,
    1,
    0,
    null,
@@ -3552,12 +3552,12 @@ window.FACILITIES = [
    0,
    0,
    0,
-   0,
+   1,
    0,
    0
   ],
   "waiting": [
-   5,
+   8,
    0,
    2,
    0,
@@ -3588,7 +3588,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    null,
@@ -3650,7 +3650,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   4,
+   5,
    0,
    0,
    0,
@@ -3682,7 +3682,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    1,
-   0,
+   1,
    0,
    null,
    null,
@@ -3712,8 +3712,8 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   16,
-   5,
+   17,
+   3,
    0,
    0,
    0,
@@ -3736,14 +3736,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
+   0,
    1,
-   2,
+   0,
    1,
-   1,
-   1
+   0
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    0,
@@ -3767,11 +3767,11 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   8,
-   0,
+   7,
    0,
    2,
-   4
+   2,
+   6
   ],
   "waiting": [
    0,
@@ -3797,7 +3797,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    0,
    0,
    0,
@@ -3805,7 +3805,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   19,
+   22,
    7,
    3,
    3,
@@ -3836,7 +3836,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   8,
+   10,
    2,
    2,
    0,
@@ -3860,7 +3860,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    4,
-   5,
+   4,
    2,
    2,
    3,
@@ -3898,7 +3898,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   9,
+   8,
    0,
    4,
    1,
@@ -3929,7 +3929,7 @@ window.FACILITIES = [
    6
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    0,
@@ -3954,13 +3954,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
+   0,
    0,
    0,
    0
   ],
   "waiting": [
-   0,
+   2,
    3,
    1,
    0,
@@ -4076,7 +4076,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    0,
    1,
    0,
@@ -4085,7 +4085,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    0,
-   1,
+   0,
    0,
    0,
    0,
@@ -4109,15 +4109,15 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   2,
+   1,
    0,
    0,
    0
   ],
   "waiting": [
-   19,
-   7,
-   0,
+   23,
+   8,
+   1,
    0,
    1,
    1
@@ -4139,16 +4139,16 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   0,
    2,
    0,
    0,
    0
   ],
   "waiting": [
-   7,
-   0,
-   0,
+   8,
+   1,
+   1,
    0,
    0,
    0
@@ -4171,13 +4171,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
+   0,
    0,
    0,
    2
   ],
   "waiting": [
-   2,
+   6,
    4,
    1,
    0,
@@ -4205,13 +4205,13 @@ window.FACILITIES = [
    0,
    0,
    1,
-   1
+   0
   ],
   "waiting": [
-   0,
+   1,
    4,
    7,
-   1,
+   0,
    0,
    0
   ],
@@ -4236,7 +4236,7 @@ window.FACILITIES = [
    null,
    4,
    0,
-   0
+   1
   ],
   "waiting": [
    null,
@@ -4262,7 +4262,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    0,
    0,
    0,
@@ -4270,8 +4270,8 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   0,
-   2,
+   1,
+   1,
    0,
    0,
    1,
@@ -4301,7 +4301,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   1,
+   2,
    2,
    0,
    1,
@@ -4326,13 +4326,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
+   0,
    0,
    0,
    0
   ],
   "waiting": [
-   5,
+   7,
    2,
    1,
    1,
@@ -4367,8 +4367,8 @@ window.FACILITIES = [
    null,
    0,
    4,
-   0,
-   0
+   1,
+   1
   ],
   "note": ""
  },
@@ -4388,17 +4388,17 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
+   0,
    0,
    0,
    0
   ],
   "waiting": [
-   4,
+   6,
    3,
-   5,
+   6,
    1,
-   0,
+   1,
    2
   ],
   "note": ""
@@ -4417,16 +4417,16 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
+   1,
    0,
-   8,
-   9,
+   3,
    1,
    1,
-   1
+   0
   ],
   "waiting": [
    0,
-   0,
+   1,
    0,
    0,
    0,
@@ -4488,7 +4488,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    null,
-   4,
+   5,
    1,
    6,
    8,
@@ -4518,7 +4518,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   1,
+   2,
    0,
    1,
    0,
@@ -4549,9 +4549,9 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   7,
-   6,
+   10,
    5,
+   4,
    2,
    1,
    0
@@ -4580,8 +4580,8 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   0,
-   3,
+   1,
+   4,
    1,
    0,
    1,
@@ -4613,7 +4613,7 @@ window.FACILITIES = [
   "waiting": [
    null,
    0,
-   1,
+   2,
    0,
    0,
    0
@@ -4637,7 +4637,7 @@ window.FACILITIES = [
    null,
    0,
    1,
-   1,
+   0,
    1,
    3
   ],
@@ -4696,15 +4696,15 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   2,
-   1,
    0,
+   0,
+   1,
    null,
    null,
    null
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    null,
@@ -4727,7 +4727,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    0,
    0,
    null,
@@ -4797,7 +4797,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   1,
+   2,
    0,
    0,
    null,
@@ -4884,13 +4884,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   0,
+   1,
    null,
    null,
    null
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    null,
@@ -4915,7 +4915,7 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   0,
+   1,
    null,
    null,
    null
@@ -4952,8 +4952,8 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   1,
-   1,
+   0,
+   0,
    0,
    null,
    null,
@@ -4976,7 +4976,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    1,
-   1,
+   0,
    1,
    null,
    null,
@@ -5039,7 +5039,7 @@ window.FACILITIES = [
   "vacancy": [
    1,
    1,
-   3,
+   4,
    null,
    null,
    null
@@ -5068,7 +5068,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    0,
    1,
    null,
@@ -5076,7 +5076,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    null,
@@ -5138,12 +5138,12 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   24,
+   25,
    2,
    6,
-   3,
-   1,
-   1
+   2,
+   0,
+   0
   ],
   "note": ""
  },
@@ -5169,7 +5169,7 @@ window.FACILITIES = [
    1
   ],
   "waiting": [
-   1,
+   0,
    0,
    1,
    0,
@@ -5231,7 +5231,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   4,
+   5,
    4,
    1,
    0,
@@ -5262,12 +5262,12 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   5,
+   8,
    5,
    7,
    1,
    1,
-   1
+   0
   ],
   "note": ""
  },
@@ -5286,15 +5286,15 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
+   1,
+   1,
    0,
-   0,
-   0,
-   0,
+   1,
    0
   ],
   "waiting": [
-   0,
    1,
+   0,
    0,
    1,
    0,
@@ -5324,8 +5324,8 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   0,
    1,
+   0,
    0,
    null,
    null,
@@ -5352,13 +5352,13 @@ window.FACILITIES = [
    0,
    0,
    0,
-   1
+   0
   ],
   "waiting": [
-   2,
+   4,
    4,
    3,
-   4,
+   3,
    1,
    0
   ],
@@ -5379,17 +5379,17 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   0,
    0,
    0,
    0,
    4
   ],
   "waiting": [
-   10,
-   1,
-   2,
+   16,
    0,
+   2,
+   1,
    0,
    0
   ],
@@ -5417,7 +5417,7 @@ window.FACILITIES = [
    3
   ],
   "waiting": [
-   7,
+   8,
    0,
    0,
    0,
@@ -5448,8 +5448,8 @@ window.FACILITIES = [
    1
   ],
   "waiting": [
-   6,
-   2,
+   7,
+   1,
    7,
    3,
    1,
@@ -5502,7 +5502,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    0,
    0,
    null,
@@ -5510,7 +5510,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   1,
+   2,
    1,
    0,
    null,
@@ -5541,7 +5541,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   0,
+   3,
    4,
    3,
    1,
@@ -5634,8 +5634,8 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   9,
-   2,
+   10,
+   3,
    0,
    null,
    null,
@@ -5661,8 +5661,8 @@ window.FACILITIES = [
    null,
    null,
    0,
-   1,
-   1
+   0,
+   0
   ],
   "waiting": [
    null,
@@ -5721,16 +5721,16 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   0,
+   1,
    0,
    0,
    0
   ],
   "waiting": [
-   15,
-   8,
+   17,
+   9,
    0,
-   0,
+   1,
    5,
    0
   ],
@@ -5752,10 +5752,10 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
+   1,
    0,
-   0,
-   0,
-   5
+   1,
+   6
   ],
   "waiting": [
    15,
@@ -5784,12 +5784,12 @@ window.FACILITIES = [
    0,
    0,
    0,
-   1,
+   0,
    3,
    0
   ],
   "waiting": [
-   1,
+   2,
    0,
    0,
    0,
@@ -5820,7 +5820,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   11,
+   10,
    3,
    3,
    1,
@@ -5851,9 +5851,9 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   7,
+   9,
+   3,
    4,
-   5,
    1,
    0,
    0
@@ -5882,7 +5882,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   2,
+   3,
    0,
    1,
    0,
@@ -5941,10 +5941,10 @@ window.FACILITIES = [
    0,
    0,
    0,
-   0
+   1
   ],
   "waiting": [
-   4,
+   6,
    3,
    1,
    1,
@@ -5976,7 +5976,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    0,
-   0,
+   1,
    0,
    null,
    null,
@@ -6006,7 +6006,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   1,
+   2,
    0,
    0,
    null,
@@ -6038,7 +6038,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    0,
-   0,
+   1,
    0,
    null,
    null,
@@ -6068,7 +6068,7 @@ window.FACILITIES = [
    3
   ],
   "waiting": [
-   6,
+   7,
    0,
    0,
    0,
@@ -6092,14 +6092,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
+   2,
    0,
    0,
    0,
    0
   ],
   "waiting": [
-   1,
+   2,
    0,
    1,
    0,
@@ -6123,7 +6123,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   0,
    0,
    null,
    null,
@@ -6188,7 +6188,7 @@ window.FACILITIES = [
    0,
    0,
    0,
-   2,
+   3,
    13
   ],
   "waiting": [
@@ -6223,8 +6223,8 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   12,
-   0,
+   15,
+   1,
    3,
    0,
    0,
@@ -6316,10 +6316,10 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   37,
-   5,
+   44,
+   8,
+   2,
    0,
-   1,
    0,
    0
   ],
@@ -6348,7 +6348,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    7,
-   1,
+   3,
    1,
    0,
    0,
@@ -6372,7 +6372,7 @@ window.FACILITIES = [
   "vacancy": [
    null,
    null,
-   1,
+   0,
    0,
    0,
    0
@@ -6382,7 +6382,7 @@ window.FACILITIES = [
    null,
    0,
    0,
-   1,
+   0,
    0
   ],
   "note": ""
@@ -6409,8 +6409,8 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   7,
-   0,
+   13,
+   1,
    null,
    null,
    null,
@@ -6433,18 +6433,18 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   0,
    0,
    0,
    0,
    0
   ],
   "waiting": [
-   13,
-   7,
+   15,
+   8,
    1,
    2,
-   1,
+   0,
    0
   ],
   "note": ""
@@ -6471,8 +6471,8 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   12,
-   5,
+   15,
+   4,
    2,
    0,
    0,
@@ -6497,15 +6497,15 @@ window.FACILITIES = [
    0,
    0,
    0,
-   0,
+   2,
    1,
-   8
+   7
   ],
   "waiting": [
-   5,
-   0,
-   0,
-   0,
+   7,
+   2,
+   1,
+   1,
    0,
    0
   ],
@@ -6525,18 +6525,18 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
+   0,
    1,
-   0,
-   0,
-   0,
+   1,
+   1,
    0,
    0
   ],
   "waiting": [
-   5,
+   6,
    2,
    0,
-   0,
+   1,
    0,
    0
   ],
@@ -6595,10 +6595,10 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   4,
+   5,
+   1,
    2,
-   1,
-   1,
+   0,
    1,
    3
   ],
@@ -6619,14 +6619,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   2,
    0,
    0,
    0,
    0
   ],
   "waiting": [
-   10,
+   13,
    1,
    8,
    0,
@@ -6652,15 +6652,15 @@ window.FACILITIES = [
    0,
    0,
    0,
-   1,
+   0,
    0,
    1
   ],
   "waiting": [
+   2,
+   0,
+   0,
    1,
-   0,
-   0,
-   3,
    3,
    0
   ],
@@ -6688,7 +6688,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   3,
+   2,
    2,
    3,
    1,
@@ -6715,12 +6715,12 @@ window.FACILITIES = [
    0,
    0,
    0,
-   0,
+   1,
    0
   ],
   "waiting": [
    11,
-   4,
+   5,
    3,
    2,
    0,
@@ -6781,7 +6781,7 @@ window.FACILITIES = [
    6
   ],
   "waiting": [
-   8,
+   7,
    0,
    0,
    0,
@@ -6936,7 +6936,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   1,
+   2,
    2,
    2,
    0,
@@ -6998,7 +6998,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   10,
+   9,
    2,
    1,
    0,
@@ -7052,7 +7052,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    0,
    0,
    null,
@@ -7060,7 +7060,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    null,
@@ -7118,11 +7118,11 @@ window.FACILITIES = [
    0,
    0,
    0,
-   3,
+   1,
    0
   ],
   "waiting": [
-   5,
+   6,
    3,
    1,
    0,
@@ -7154,8 +7154,8 @@ window.FACILITIES = [
   ],
   "waiting": [
    1,
-   1,
-   3,
+   2,
+   4,
    0,
    0,
    0
@@ -7180,11 +7180,11 @@ window.FACILITIES = [
    0,
    0,
    0,
-   6,
-   0
+   2,
+   4
   ],
   "waiting": [
-   5,
+   4,
    2,
    0,
    0,
@@ -7246,9 +7246,9 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   18,
+   23,
    3,
-   2,
+   4,
    2,
    0,
    2
@@ -7271,16 +7271,16 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   0,
+   1,
    0,
    4,
-   0
+   1
   ],
   "waiting": [
-   19,
-   6,
-   6,
-   1,
+   21,
+   5,
+   4,
+   0,
    0,
    0
   ],
@@ -7339,7 +7339,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   14,
+   18,
    3,
    2,
    0,
@@ -7370,9 +7370,9 @@ window.FACILITIES = [
    1
   ],
   "waiting": [
-   13,
-   7,
-   1,
+   15,
+   6,
+   2,
    1,
    1,
    0
@@ -7393,7 +7393,7 @@ window.FACILITIES = [
   "approx": true,
   "over3": null,
   "vacancy": [
-   2,
+   1,
    2,
    11,
    8,
@@ -7456,8 +7456,8 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    null,
-   1,
    0,
+   1,
    3,
    1,
    11
@@ -7488,13 +7488,13 @@ window.FACILITIES = [
   "vacancy": [
    1,
    1,
-   1,
-   5,
+   2,
+   4,
    0,
-   1
+   0
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    0,
@@ -7517,7 +7517,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   0,
+   1,
    0,
    0,
    0,
@@ -7525,7 +7525,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   10,
+   11,
    2,
    3,
    0,
@@ -7561,7 +7561,7 @@ window.FACILITIES = [
    2
   ],
   "waiting": [
-   4,
+   5,
    2,
    0,
    0,
@@ -7617,17 +7617,17 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   1,
+   0,
    0,
    8,
    10
   ],
   "waiting": [
-   1,
    3,
+   3,
+   1,
    0,
-   0,
-   0,
+   1,
    0
   ],
   "note": ""
@@ -7648,7 +7648,7 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   0,
+   1,
    0,
    1,
    1
@@ -7678,14 +7678,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
+   1,
+   2,
    3,
-   4,
    10,
    0
   ],
   "waiting": [
-   2,
+   3,
    1,
    0,
    0,
@@ -7708,15 +7708,15 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
+   1,
    0,
-   0,
-   6,
+   5,
    1,
    0,
    4
   ],
   "waiting": [
-   1,
+   4,
    0,
    0,
    0,
@@ -7747,7 +7747,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   2,
+   6,
    4,
    4,
    2,
@@ -7772,7 +7772,7 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   0,
+   1,
    0,
    1,
    2
@@ -7802,14 +7802,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   0,
    2,
    0,
    10,
    8
   ],
   "waiting": [
-   5,
+   7,
    0,
    0,
    1,
@@ -7834,7 +7834,7 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   0,
+   4,
    0,
    0,
    0
@@ -7871,7 +7871,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   1,
+   2,
    2,
    0,
    0,
@@ -7902,7 +7902,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   9,
+   11,
    13,
    4,
    0,
@@ -7933,9 +7933,9 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   18,
+   19,
    9,
-   8,
+   7,
    6,
    1,
    1
@@ -7964,9 +7964,9 @@ window.FACILITIES = [
    1
   ],
   "waiting": [
-   6,
+   8,
    5,
-   2,
+   3,
    0,
    0,
    0
@@ -7988,7 +7988,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
+   1,
    6,
    null,
    null,
@@ -8018,7 +8018,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   0,
+   1,
    0,
    0,
    0,
@@ -8049,7 +8049,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   0,
+   1,
    0,
    1,
    0,
@@ -8090,7 +8090,7 @@ window.FACILITIES = [
   "waiting": [
    7,
    4,
-   6,
+   7,
    2,
    0,
    0
@@ -8112,8 +8112,8 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
+   3,
    0,
-   1,
    0,
    1,
    1
@@ -8121,7 +8121,7 @@ window.FACILITIES = [
   "waiting": [
    1,
    4,
-   2,
+   1,
    0,
    0,
    0
@@ -8150,7 +8150,7 @@ window.FACILITIES = [
    2
   ],
   "waiting": [
-   4,
+   5,
    5,
    0,
    1,
@@ -8173,7 +8173,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   0,
+   3,
    0,
    0,
    0,
@@ -8181,7 +8181,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   5,
+   4,
    4,
    1,
    0,
@@ -8207,13 +8207,13 @@ window.FACILITIES = [
    0,
    0,
    0,
-   2,
+   1,
    3,
    6
   ],
   "waiting": [
    0,
-   2,
+   3,
    1,
    0,
    0,
@@ -8297,10 +8297,10 @@ window.FACILITIES = [
   "approx": true,
   "over3": null,
   "vacancy": [
-   3,
    1,
-   4,
    0,
+   4,
+   1,
    4,
    0
   ],
@@ -8329,7 +8329,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   0,
    0,
    1,
    1,
@@ -8393,7 +8393,7 @@ window.FACILITIES = [
    0,
    0,
    0,
-   1,
+   0,
    0,
    0
   ],
@@ -8401,7 +8401,7 @@ window.FACILITIES = [
    0,
    0,
    0,
-   1,
+   0,
    1,
    0
   ],
@@ -8423,13 +8423,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   2,
-   2,
    3,
+   2,
+   4,
    1
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    0,
@@ -8460,10 +8460,10 @@ window.FACILITIES = [
    2
   ],
   "waiting": [
-   1,
+   4,
    0,
    0,
-   1,
+   0,
    0,
    0
   ],
@@ -8522,10 +8522,10 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   6,
+   8,
    3,
    1,
-   1,
+   0,
    0,
    0
   ],
@@ -8547,13 +8547,13 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   4,
+   2,
    0,
    0,
    4
   ],
   "waiting": [
-   6,
+   7,
    0,
    0,
    2,
@@ -8581,7 +8581,7 @@ window.FACILITIES = [
    0,
    5,
    6,
-   0
+   1
   ],
   "waiting": [
    0,
@@ -8608,7 +8608,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
+   1,
    0,
    1,
    0,
@@ -8646,7 +8646,7 @@ window.FACILITIES = [
    3
   ],
   "waiting": [
-   5,
+   7,
    3,
    1,
    0,
@@ -8677,8 +8677,8 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   2,
    4,
+   3,
    0,
    null,
    null,
@@ -8739,7 +8739,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   1,
+   0,
    0,
    0,
    null,
@@ -8832,7 +8832,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   2,
+   3,
    1,
    0,
    null,
@@ -8863,7 +8863,7 @@ window.FACILITIES = [
    5
   ],
   "waiting": [
-   1,
+   0,
    4,
    2,
    0,
@@ -8894,7 +8894,7 @@ window.FACILITIES = [
    8
   ],
   "waiting": [
-   0,
+   1,
    2,
    0,
    0,
@@ -8956,8 +8956,8 @@ window.FACILITIES = [
    7
   ],
   "waiting": [
-   12,
-   3,
+   19,
+   4,
    2,
    0,
    0,
@@ -8987,7 +8987,7 @@ window.FACILITIES = [
    4
   ],
   "waiting": [
-   2,
+   5,
    0,
    0,
    0,
@@ -9011,7 +9011,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   6,
+   5,
    2,
    5,
    9,
@@ -9050,7 +9050,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    14,
-   3,
+   4,
    2,
    0,
    0,
@@ -9072,7 +9072,7 @@ window.FACILITIES = [
   "approx": true,
   "over3": null,
   "vacancy": [
-   2,
+   1,
    0,
    2,
    5,
@@ -9205,7 +9205,7 @@ window.FACILITIES = [
   ],
   "waiting": [
    null,
-   2,
+   3,
    0,
    0,
    0,
@@ -9235,7 +9235,7 @@ window.FACILITIES = [
    2
   ],
   "waiting": [
-   2,
+   3,
    5,
    1,
    1,
@@ -9260,16 +9260,16 @@ window.FACILITIES = [
   "vacancy": [
    null,
    0,
+   2,
+   0,
    1,
-   0,
-   0,
    10
   ],
   "waiting": [
    null,
    1,
    0,
-   3,
+   4,
    0,
    0
   ],
@@ -9297,8 +9297,8 @@ window.FACILITIES = [
    10
   ],
   "waiting": [
-   10,
-   0,
+   12,
+   1,
    0,
    0,
    0,
@@ -9321,15 +9321,15 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    null,
-   0,
-   0,
+   2,
+   1,
    0,
    0,
    0
   ],
   "waiting": [
    null,
-   12,
+   15,
    1,
    1,
    0,
@@ -9353,14 +9353,14 @@ window.FACILITIES = [
   "vacancy": [
    0,
    0,
-   4,
+   1,
    2,
    10,
    10
   ],
   "waiting": [
-   7,
-   2,
+   12,
+   3,
    1,
    0,
    0,
@@ -9383,15 +9383,15 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    null,
-   0,
-   0,
+   1,
+   1,
    0,
    0,
    0
   ],
   "waiting": [
    null,
-   2,
+   3,
    0,
    0,
    0,
@@ -9448,12 +9448,12 @@ window.FACILITIES = [
    0,
    5,
    0,
-   5,
+   4,
    0
   ],
   "waiting": [
    null,
-   1,
+   4,
    0,
    0,
    0,
@@ -9483,9 +9483,9 @@ window.FACILITIES = [
    10
   ],
   "waiting": [
-   21,
+   28,
    4,
-   2,
+   1,
    0,
    0,
    0
@@ -9508,14 +9508,14 @@ window.FACILITIES = [
   "vacancy": [
    null,
    0,
-   4,
+   3,
    0,
    0,
    0
   ],
   "waiting": [
    null,
-   10,
+   14,
    0,
    0,
    0,
@@ -9539,14 +9539,14 @@ window.FACILITIES = [
   "vacancy": [
    null,
    0,
-   2,
+   1,
    0,
-   2,
+   1,
    0
   ],
   "waiting": [
    null,
-   9,
+   10,
    0,
    0,
    0,
@@ -9600,7 +9600,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   0,
+   1,
    0,
    null,
    null,
@@ -9634,11 +9634,11 @@ window.FACILITIES = [
    1,
    0,
    0,
-   2,
-   4
+   0,
+   0
   ],
   "waiting": [
-   2,
+   5,
    1,
    0,
    0,
@@ -9662,15 +9662,15 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   0,
    0,
    0,
    0,
    0
   ],
   "waiting": [
-   1,
    2,
+   3,
    1,
    1,
    1,
@@ -9793,7 +9793,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    0,
@@ -9824,7 +9824,7 @@ window.FACILITIES = [
    null
   ],
   "waiting": [
-   0,
+   1,
    0,
    0,
    null,
@@ -9879,14 +9879,14 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
+   7,
    6,
-   8,
+   2,
    1,
-   1,
-   1
+   0
   ],
   "waiting": [
-   1,
+   2,
    0,
    0,
    0,
@@ -9912,13 +9912,13 @@ window.FACILITIES = [
    0,
    0,
    0,
-   1,
-   3,
-   5
+   0,
+   0,
+   0
   ],
   "waiting": [
-   7,
-   1,
+   5,
+   2,
    0,
    0,
    0,
@@ -9945,11 +9945,11 @@ window.FACILITIES = [
    "approx": false
   },
   "vacancy": [
+   0,
+   0,
+   4,
+   0,
    1,
-   0,
-   2,
-   0,
-   0,
    0
   ],
   "waiting": [
@@ -9984,7 +9984,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   2,
+   3,
    4,
    2,
    3,
@@ -10007,16 +10007,16 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   3,
+   0,
+   0,
    0,
    0,
    1,
-   3,
    0
   ],
   "waiting": [
-   3,
-   0,
+   4,
+   1,
    0,
    0,
    0,
@@ -10038,7 +10038,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   3,
+   0,
    0,
    0,
    0,
@@ -10046,7 +10046,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   9,
+   8,
    1,
    4,
    2,
@@ -10077,7 +10077,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   3,
+   4,
    0,
    0,
    0,
@@ -10100,7 +10100,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    0,
    1,
    0,
@@ -10108,9 +10108,9 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   6,
+   14,
    4,
-   0,
+   1,
    2,
    0,
    0
@@ -10139,7 +10139,7 @@ window.FACILITIES = [
    0
   ],
   "waiting": [
-   1,
+   0,
    0,
    0,
    0,
@@ -10170,7 +10170,7 @@ window.FACILITIES = [
    1
   ],
   "waiting": [
-   16,
+   19,
    2,
    0,
    2,
@@ -10286,7 +10286,7 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   1,
+   0,
    1,
    0,
    null,
@@ -10318,7 +10318,7 @@ window.FACILITIES = [
   "over3": null,
   "vacancy": [
    0,
-   1,
+   2,
    3,
    null,
    null,
@@ -10441,9 +10441,9 @@ window.FACILITIES = [
   "approx": false,
   "over3": null,
   "vacancy": [
-   3,
+   1,
    0,
-   0,
+   1,
    null,
    null,
    null
