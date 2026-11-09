@@ -337,11 +337,24 @@
     var now = new Date(Date.now() + 9 * 3600e3); // 日本時間
     var day = now.toISOString().slice(0, 10);
     var mon = new Date(now.getTime() - ((now.getUTCDay() + 6) % 7) * 864e5).toISOString().slice(0, 10);
-    var params = new URLSearchParams(location.search), tag = params.get("from") || "";
-    if (tag) { // チラシなどの目印は、共有やブックマークに残らないよう消しておく
+    var params = new URLSearchParams(location.search), tag = params.get("from") || "", mode = params.get("count");
+    if (tag || mode) { // チラシなどの目印は、共有やブックマークに残らないよう消しておく
       params.delete("from");
+      params.delete("count");
       history.replaceState(null, "", location.pathname + (params.toString() ? "?" + params : "") + location.hash);
     }
+    if (mode === "off" || mode === "on") { // 作者の端末を数えないための切り替え（ダッシュボードのリンクから来る）
+      if (mode === "off") localStorage.setItem("hitotema.count.off", "1"); else localStorage.removeItem("hitotema.count.off");
+      document.addEventListener("DOMContentLoaded", function () {
+        var d = document.createElement("div");
+        d.textContent = mode === "off" ? "この端末は、今後数えません" : "この端末を、また数えるようにしました";
+        d.style.cssText = "position:fixed;left:12px;right:12px;bottom:16px;z-index:9999;padding:14px 16px;border-radius:10px;background:#22201C;color:#fff;font-size:15px;text-align:center";
+        document.body.appendChild(d);
+        setTimeout(function () { d.remove(); }, 6000);
+      });
+      return;
+    }
+    if (localStorage.getItem("hitotema.count.off")) return;
     var s = JSON.parse(localStorage.getItem(KEY) || "null");
     if (s && s.d === day) return;
     var ref = ""; try { ref = new URL(document.referrer).hostname; if (ref === location.hostname) ref = ""; } catch (e) {}
