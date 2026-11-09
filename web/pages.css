@@ -44,7 +44,6 @@ body.shop {
   font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
 }
 .shop .hero { text-align: center; padding: 20px 0 8px; }
-.shop .hero img { display: block; width: 180px; height: 180px; margin: 0 auto 8px; }
 .shop .name { font-family: "Yuji Syuku", serif; font-size: 44px; line-height: 1.3; font-weight: 400; margin: 0; }
 .shop .title { color: var(--sub); margin: 4px 0 14px; }
 .shop .copy { display: inline-block; background: #D2412F; color: #FFFFFF; font-size: 15px; font-weight: 700; padding: 6px 10px; border-radius: 4px; line-height: 1.6; text-wrap: balance; }
@@ -53,3 +52,5 @@ body.shop {
 .staff h3 { font-size: 18px; line-height: 1.5; margin: 0 0 4px; }
 .staff h3 small { font-size: 13px; font-weight: 400; color: var(--sub); margin-left: 6px; }
 .staff p { margin: 0; }
+.staff.has-img { display: flow-root; }
+.staff.has-img img { float: left; width: 96px; height: 96px; margin: 0 14px 2px 0; }
