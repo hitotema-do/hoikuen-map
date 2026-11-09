@@ -224,6 +224,9 @@
   .empty { padding: 16px 18px; color: var(--muted); font-size: 14px; line-height: 1.6; }
   .sheet-foot { padding: 12px 18px calc(16px + env(safe-area-inset-bottom)); font-size: 11px; color: var(--muted); line-height: 1.6; }
   .sheet-foot .app { font-size: 12px; font-weight: 700; color: var(--text); }
+  .sheet-foot a { color: var(--muted); }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 0 18px; margin-top: 6px; font-size: 12px; }
+  .foot-links a { padding: 7px 0; }
   .legend { display: flex; gap: 10px; flex-wrap: wrap; color: var(--text); font-size: 12px; margin-bottom: 6px; }
   .legend span::before {
     content: "";
@@ -416,6 +419,14 @@
       <div id="legendNote"></div>
       <div class="app" style="margin-top: 8px">広島市 保育園空きマップ</div>
       <div id="dataInfo"></div>
+      <div>広島市の公式サービスではありません。出典：<a href="https://www.city.hiroshima.lg.jp/living/kosodate/1021251/1025847/1023646.html" target="_blank" rel="noopener">広島市「保育園等の空き状況」</a></div>
+      <nav class="foot-links" aria-label="運営情報">
+        <a href="about.html">このアプリについて</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="hitotema.html">ひとてま堂について</a>
+      </nav>
+      <div>© 2026 ひとてま堂</div>
     </div>
   </div>
 </section>
@@ -911,11 +922,9 @@ function updateLegend() {
        <span style="--c:var(--few)">1〜2人</span>
        <span class="small">空きなし</span>
        <span class="ring">対象年齢外</span>`;
-  document.getElementById("legendNote").textContent = (mode === "waiting"
+  document.getElementById("legendNote").textContent = mode === "waiting"
     ? "待機＝その園を第1希望にして入園を待っている人数。0人でも希望者がいないとは限りません。"
-    : "空きがあっても入園できるとは限らないため、最新の状況は各区の福祉課で確認してください。")
-    + "広島市の公式サービスではありません。出典：広島市「保育園等の空き状況」"
-    + "。利用状況を知るため、Cloudflare Web Analytics でアクセス数を、また1日に何台から開かれたかを数えています（個人を特定する情報は集めていません）。";
+    : "空きがあっても入園できるとは限らないため、最新の状況は各区の福祉課で確認してください。";
 }
 
 // ---- 現在地 ----

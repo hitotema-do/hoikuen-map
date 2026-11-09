@@ -1,0 +1,55 @@
+/* 運営情報のページ（このアプリについて／プライバシーポリシー／お問い合わせ／ひとてま堂について）で共通の見た目 */
+:root {
+  --bg: #F6F7F9; --card: #FFFFFF; --ink: #1C2128; --sub: #5F6B7A; --line: #E2E6EB; --accent: #2563EB;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171C; --card: #1E232A; --ink: #E8ECF0; --sub: #9AA5B1; --line: #2E353E; --accent: #7DB0FA;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.wrap { max-width: 640px; margin: 0 auto; padding: 16px 16px 40px; }
+.back { display: inline-block; padding: 8px 0; color: var(--accent); }
+h1 { font-size: 24px; line-height: 1.4; margin: 12px 0 20px; }
+h2 { font-size: 18px; line-height: 1.5; margin: 28px 0 8px; padding-left: 10px; border-left: 4px solid var(--accent); }
+p { margin: 0 0 12px; }
+ul { margin: 0 0 12px; padding-left: 1.4em; }
+li { margin-bottom: 6px; }
+a { color: var(--accent); }
+.notice { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.btn { display: block; text-align: center; background: var(--accent); color: var(--bg); font-weight: 700; text-decoration: none; padding: 13px 16px; border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 8px 10px 0; border-bottom: 1px solid var(--line); }
+th { width: 6em; }
+.foot { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--sub); }
+.foot nav { display: flex; flex-wrap: wrap; gap: 0 18px; margin-bottom: 8px; }
+.foot nav a { color: var(--sub); padding: 7px 0; }
+.foot p { margin: 0; }
+
+/* ひとてま堂について：店の見た目 */
+body.shop {
+  --bg: #F7F1E5; --card: #FFFBF3; --ink: #2B2420; --sub: #6E5F52; --line: #E2D8C6; --accent: #2B2420;
+  color-scheme: light;
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+}
+.shop .hero { text-align: center; padding: 20px 0 8px; }
+.shop .hero img { display: block; width: 180px; height: 180px; margin: 0 auto 8px; }
+.shop .name { font-family: "Yuji Syuku", serif; font-size: 44px; line-height: 1.3; font-weight: 400; margin: 0; }
+.shop .title { color: var(--sub); margin: 4px 0 14px; }
+.shop .copy { display: inline-block; background: #D2412F; color: #FFFFFF; font-size: 15px; font-weight: 700; padding: 6px 10px; border-radius: 4px; line-height: 1.6; text-wrap: balance; }
+.shop h2 { border-left-color: #D2412F; }
+.staff { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+.staff h3 { font-size: 18px; line-height: 1.5; margin: 0 0 4px; }
+.staff h3 small { font-size: 13px; font-weight: 400; color: var(--sub); margin-left: 6px; }
+.staff p { margin: 0; }
