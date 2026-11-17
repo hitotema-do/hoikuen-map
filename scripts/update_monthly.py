@@ -7,7 +7,7 @@
 2. data/pdf/YYYY-MM/ にPDFを保存（すでにあれば取り直さない）
 3. 抽出して data/vacancy_YYYY-MM.csv を作る
 4. 前の月と比べて、おかしな点がないか確認する
-5. 地図用データ web/data.js を作る
+5. 地図用データ web/data.js を作る。区ごとのページ web/ku/ も作り直す
 
 確認で気になる点があれば「要確認」を表示して終了コード2で終わる（ファイルは作るので中身を見て判断する）。
 将来 GitHub Actions で自動化するときは、終了コードが0のときだけ反映する。
@@ -109,6 +109,9 @@ def read_csv(path):
     return list(csv.DictReader(open(path, encoding="utf-8-sig")))
 
 
+from build_ward_pages import main as build_ward_pages
+
+
 def main():
     parser = argparse.ArgumentParser(description="保育園空きマップの月次更新")
     parser.add_argument("--force", action="store_true", help="同じ月でも作り直す")
@@ -137,6 +140,7 @@ def main():
     list_pdf = sorted((ROOT / "data" / "facility_list").glob("ichiran_*.pdf"))[-1]
     print(f"施設一覧：{list_pdf.name}")
     out, problems = build(vacancy_csv, list_pdf, list(WARDS.values()), None, ROOT / "web" / "data.js", info)
+    build_ward_pages()  # 区ごとのページ（web/ku/）も同じ数字で作り直す
 
     prev_csv = latest_previous_csv(month)
     prev_rows = read_csv(prev_csv) if prev_csv else []

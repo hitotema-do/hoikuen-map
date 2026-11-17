@@ -443,6 +443,7 @@
       <div id="dataInfo"></div>
       <div>広島市の公式サービスではありません。出典：<a href="https://www.city.hiroshima.lg.jp/living/kosodate/1021251/1025847/1023646.html" target="_blank" rel="noopener">広島市「保育園等の空き状況」</a></div>
       <nav class="foot-links" aria-label="運営情報">
+        <a href="ku/">区ごとの空き状況</a>
         <a href="about.html">このアプリについて</a>
         <a href="privacy.html">プライバシーポリシー</a>
         <a href="contact.html">お問い合わせ</a>
@@ -977,6 +978,18 @@ function onResize() {
 wide.addEventListener("change", onResize);
 window.addEventListener("resize", onResize);
 
+// 区のページ（ku/〇〇.html）のボタンから来たときは、その区で絞り込んで始める
+const linkWard = (() => {
+  const p = new URLSearchParams(location.search), w = p.get("ward");
+  if (!w) return null;
+  p.delete("ward");
+  history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : "") + location.hash);
+  return WARD_ORDER.includes(w) ? w : null;
+})();
+if (linkWard) {
+  wardSel.add(linkWard);
+  document.querySelector(`#wardChips [data-value="${linkWard}"]`).setAttribute("aria-pressed", "true");
+}
 updateLegend();
 onResize();
 render();
@@ -991,7 +1004,9 @@ function fitStart() {
     return;
   }
   onResize();
-  const startArea = size.x <= 700
+  const startArea = linkWard
+    ? window.FACILITIES.filter(f => f.ward === linkWard)
+    : size.x <= 700
     ? window.FACILITIES.filter(f => f.ward === "中区")
     : window.FACILITIES;
   fitTo(startArea);
